@@ -22,85 +22,64 @@
 
 
 
-@KBD
-D = A
-@kbdptr
-M = D
-
-
-@BLACK
-0; JMP
-
-
+// @KBD
+// D = A
+// @kbdptr
+// M = D
 
 (LOOP)
+
+// get input key
 @KBD
 D = M
 
-@WHITE
-D; JEQ
+@RELEASE
+D, JEQ
 
-// BLACK
+// hold
+@fillval
+M = -1
+@DRAW
+0; JMP
+
+(RELEASE)
+@fillval
+M = 0
+
+
+(DRAW)
 // ptr = base address of screen mmap
-(BLACK)
 @SCREEN
 D = A
 @ptr
 M = D
-
-    (DRAWBLACK)
+    (DRAWLOOP)
         @ptr
         D = M
 
-        @kbdptr
-        D = D - M
+        @KBD
+        D = D - A
 
         @LOOP
         D; JEQ
+        
+        @fillval
+        D = M
 
         @ptr
         A = M
-        M = -1
+
+        M = D
         
         // ptr++
         @ptr
         M = M + 1
         
         // go back
-        @DRAWBLACK
+        @DRAWLOOP
         0; JMP
 
-// WHITE
-(WHITE)
-@SCREEN
-D = A
-@ptr
-M = D
-
-    (DRAWWHITE)
-        @ptr
-        D = M
-
-        @kbdptr
-        D = D - M
-
-        @LOOP
-        D; JEQ
-
-        @ptr
-        A = M
-        M = 0
-        
-        // ptr++
-        @ptr
-        M = M + 1
-        
-        // go back
-        @DRAWWHITE
-        0; JMP
-
-
-// (END)
-// @END
-// 0; JMP
+(END)
+@END
+0; JMP
 
