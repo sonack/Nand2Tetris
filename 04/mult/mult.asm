@@ -7,3 +7,45 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
 // Put your code here.
+
+// i = 0
+@i
+M = 0
+// sum = 0
+@sum
+M = 0
+
+(LOOP)
+// if i == R0, break
+@R0
+D = M
+@i
+D = M - D
+@WRITE
+D; JEQ
+
+// sum += R1
+@R1
+D = M
+@sum
+M = M + D
+
+// i++
+@i
+M = M + 1
+
+// loop back
+@LOOP
+0; JMP
+
+// write sum back to R2
+(WRITE)
+@sum
+D = M
+@R2
+M = D
+
+// terminate the program
+(END)
+@END
+0; JMP

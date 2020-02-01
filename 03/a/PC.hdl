@@ -11,10 +11,62 @@
  * else                    out[t+1] = out[t]
  */
 
+ /**
+  *  sel[0]      
+  *     r l i else
+  *     0 1 0 1
+  *  sel0 = not (r or i)
+  *  sel[1]:  0 0 1 1
+  *  sel1 = not (r or l)
+  * inc load
+  * r = 1, l = 0, i = 0, sel = 00
+  * r = 0, l = 1, i = 0, sel = 01
+  * r = 0, l = 0, i = 1, sel = 10
+  * load, inc = 0 if reset = 1
+  * inc = 0 if load = 1
+  * incf = (not reset) and (not load) = not(reset or load);
+  */
+
+/*
 CHIP PC {
     IN in[16],load,inc,reset;
     OUT out[16];
 
     PARTS:
     // Put your code here:
+
+    Or(a = load, b = inc, out = t);
+    Or(a = t, b = reset, out = keep);
+
+    Register(in = realin, load = keep, out = out, out = lastout);
+
+    Inc16(in = lastout, out = lastoutplus1);
+
+    // load priority
+    Mux(a = load, b = false, sel = reset, out = loadf);
+
+    // inc priority calculation
+    Mux(a = inc, b = false, sel = reset, out = tmpinc);
+    Mux(a = tmpinc, b = false, sel = loadf, out = incf);
+    
+    Mux4Way16(a = false, b = in, c = lastoutplus1, d = false, sel[0] = loadf, sel[1] = incf, out = realin);
+}
+*/
+
+
+// 按照计算顺序反向覆盖
+CHIP PC {
+    IN in[16],load,inc,reset;
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+    Or(a = load, b = inc, out = t);
+    Or(a = t, b = reset, out = keep);
+    Register(in = realin, load = keep, out = out, out = lastout);
+
+    Inc16(in = lastout, out = lastoutplus1);
+    Mux16(a = false, b = lastoutplus1, sel = inc, out = incout);
+    Mux16(a = incout, b = in, sel = load, out = loadout);
+    Mux16(a = loadout, b = false, sel = reset, out = realin);
 }
