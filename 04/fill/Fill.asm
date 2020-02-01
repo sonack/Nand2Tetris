@@ -46,8 +46,20 @@ M = -1
 @fillval
 M = 0
 
-
 (DRAW)
+// if lastfillval == fillval, then do nothing
+@fillval
+D = M
+
+@lastfillval
+D = D - M
+
+@LOOP
+D; JEQ
+
+@lastfillval
+M = D
+
 // ptr = base address of screen mmap
 @SCREEN
 D = A
