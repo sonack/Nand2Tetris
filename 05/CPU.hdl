@@ -40,4 +40,61 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+
+    Mux16(a = instruction, b = outALU, sel = instruction[15], out = toA);
+    // a == 0, use A; a == 1, use M, where a = instruction[12]
+    Mux16(a = outA, b = inM, sel = instruction[12], out = AorM);
+    // AorM is on y
+    ALU(x=outD ,y=AorM ,zx=instruction[11] ,nx=instruction[10] ,zy=instruction[9],ny=instruction[8] ,f=instruction[7] ,no=instruction[6] ,out=outALU, out=outM, zr=eq ,ng=lt);
+
+    // D Registor, load = d2 = instruction[4]
+    // C type and instruction[4]
+    And(a = instruction[15], b = instruction[4], out = loadD);
+    DRegister(in = outALU, load = loadD, out = outD);
+    // A Registor, load = d1 = instruction[5]
+    // A type or (C type and d1), because only 2 types, ~A = D, so which is equivalent to 'Atype or d1'
+    Not(in = instruction[15], out = Atype);
+    Or(a = Atype, b = instruction[5], out = loadA);
+    ARegister(in = toA, load = loadA, out = outA, out[0..14] = addressM);
+
+    // no jump, j1 j2 j3 = 0 0 0
+    // Or(a = instruction[2], b = instruction[1], out = j1orj2);
+    // Or(a = j1orj2, b = instruction[0], out = jmp);
+    // Not(in = jmp, out = nojmp);
+    
+    // uncond jmp, 1 1 1
+    // And(a = instruction[2], b = instruction[1], out = j1andj2);
+    // And(a = j1andj2, b = instruction[0], out = uncondjmp);
+    
+    // check cond jump
+    // j1 j2 j3
+    // <  =  >
+    // ng = lt, zr = eq
+    // ng == 1 zr == 1 else (ng==0 && zr==0) --> (!ng && !zr) --> !(ng or zr)
+    
+    // <=
+    Or(a = eq, b = lt, out = le);
+    // not <= is >
+    Not(in = le, out = gt);
+
+    And(a = instruction[2], b = lt, out = ltPass);
+    And(a = instruction[1], b = eq, out = eqPass);
+    And(a = instruction[0], b = gt, out = gtPass);
+    // at least one cond is satisfied, Ok! (as >= means > or ==)
+    // uncond jmp should always satisfy at least one < = >, so we reduce it to cond jmp
+    Or(a = ltPass, b = eqPass, out = lteqPass);
+    // Or(a = lteqPass, b = gtPass, out = condjmp);
+
+    Or(a = lteqPass, b = gtPass, out = allPass);
+    // only Ctype has jump
+    And(a = instruction[15], b = allPass, out = canjmp);
+
+    Not(in = canjmp, out = walk);
+    // Or(a = uncondjmp, b = condjmp, out = canjmp);
+    PC(in=outA, load=canjmp, inc=walk, reset=reset, out[0..14]=pc);
+
+    // C type && writeM = d3 = instruction[3]
+    And(a = instruction[15], b = instruction[3], out = writeM);
+    // Or(a = instruction[3], b = false, out = writeM);
+
 }
