@@ -30,10 +30,10 @@ CHIP Memory {
     // Put your code here:
     // 8K block
     // if address > 0x6000, then reduce this invalid case to keyboard memory map address (24K);
-    DMux4Way(in = true, sel = address[13..14], a = selRAM0, b = selRAM1, c = selSCN, d = selKBD);
-    Or(a = selRAM0, b = selRAM1, out = selRAM);
-    And(a = load, b = selRAM, out = loadRAM);
-    And(a = load, b = selSCN, out = loadSCN);
+    DMux4Way(in = load, sel = address[13..14], a = loadRAM0, b = loadRAM1, c = loadSCN, d = loadKBD);
+    Or(a = loadRAM0, b = loadRAM1, out = loadRAM);
+    // And(a = load, b = selRAM, out = loadRAM);
+    // And(a = load, b = selSCN, out = loadSCN);
 
     RAM16K(in = in, load = loadRAM, address = address[0..13], out = outRAM);
     Screen(in = in, load = loadSCN, address = address[0..12], out = outSCN);
