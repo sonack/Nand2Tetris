@@ -4,6 +4,7 @@
 import os.path as osp
 from enum import Enum
 import argparse
+import time
 import pdb
 
 
@@ -200,7 +201,7 @@ def firstPass(parser, symbolTable):
 def main():
     varSlot = 16
     parser = argparse.ArgumentParser()
-    parser.add_argument('inputFile', type=str, help='the asm file to assembly')
+    parser.add_argument('--inputFile', type=str, default='pong/Pong.asm', help='the asm file to assembly')
     args = parser.parse_args()
     # print(args)
     srcName = args.inputFile
@@ -240,9 +241,13 @@ def main():
             else:
                 # L_COMMAND
                 continue
-            print(binary)
+            # print(binary)
             tgt_f.write(binary + '\n')
             # pdb.set_trace()
 
 if __name__ == '__main__':
+    start_t = time.time()
     main()
+    end_t = time.time()
+    elapse = int(round((end_t - start_t) * 1000))
+    print('It takes %dms to assembly.' % elapse)
