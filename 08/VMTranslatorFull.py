@@ -374,16 +374,44 @@ class Coder(object):
         self.asmSnippets.append('M=D')
         self._changeSP()
 
-        # push LCL, ARG, THIS, THAT of the caller
-        tosave = ['LCL', 'ARG', 'THIS', 'THAT']
-        for save in tosave:
-            self.asmSnippets.append('@{}'.format(save))
-            self.asmSnippets.append('D=M')
-            self.asmSnippets.append('@SP')
-            self.asmSnippets.append('A=M')
-            self.asmSnippets.append('M=D')
-            self._changeSP()
+        # push LCL(1), ARG(2), THIS(3), THAT(4) of the caller
+        # bug here, can't pass NestedCall Case
+        # '''
+        pushCtxLabel = retAddrLabel.replace('$ret', '$saveCtx')
+        pushCtxContLabel = retAddrLabel.replace('$ret', '$saveCtxCont')
+        self.asmSnippets.append('@R15')
+        self.asmSnippets.append('M=1')
+        self.asmSnippets.append('({})'.format(pushCtxLabel))
+        self.asmSnippets.append('@R15')
+        self.asmSnippets.append('D=M')
+        self.asmSnippets.append('@THAT')
+        self.asmSnippets.append('D=D-A')
+        self.asmSnippets.append('@{}'.format(pushCtxContLabel))
+        self.asmSnippets.append('D;JGT')
+        self.asmSnippets.append('@R15')
+        self.asmSnippets.append('A=M')
+        self.asmSnippets.append('D=M')
+        self.asmSnippets.append('@SP')
+        self.asmSnippets.append('A=M')
+        self.asmSnippets.append('M=D')
+        self._changeSP()
+        self.asmSnippets.append('@R15')
+        self.asmSnippets.append('M=M+1')
+        self.asmSnippets.append('@{}'.format(pushCtxLabel))
+        self.asmSnippets.append('0;JMP')
+        self.asmSnippets.append('({})'.format(pushCtxContLabel))
+        # '''
+
+        # tosave = ['LCL', 'ARG', 'THIS', 'THAT']
+        # for save in tosave:
+        #     self.asmSnippets.append('@{}'.format(save))
+        #     self.asmSnippets.append('D=M')
+        #     self.asmSnippets.append('@SP')
+        #     self.asmSnippets.append('A=M')
+        #     self.asmSnippets.append('M=D')
+        #     self._changeSP()
         
+
         # reposition ARG, ARG = SP - 5 - nArgs
         # offset
         self.asmSnippets.append('@{}'.format(5+int(numArgs)))
