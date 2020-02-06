@@ -210,7 +210,7 @@ class Coder(object):
             self.asmSnippets.append('@SP')
             self.asmSnippets.append('A=M')
             self.asmSnippets.append('D=M')
-            self.asmSnippets.append('@tmp')
+            self.asmSnippets.append('@R13')
             self.asmSnippets.append('M=D')
 
             if segment in self.seg2sym:
@@ -233,11 +233,11 @@ class Coder(object):
                 self.asmSnippets.append('@{}'.format(where))
                 self.asmSnippets.append('D=A')
 
-            self.asmSnippets.append('@addr')
+            self.asmSnippets.append('@R14')
             self.asmSnippets.append('M=D')
-            self.asmSnippets.append('@tmp')
+            self.asmSnippets.append('@R13')
             self.asmSnippets.append('D=M')
-            self.asmSnippets.append('@addr')
+            self.asmSnippets.append('@R14')
             self.asmSnippets.append('A=M')
             self.asmSnippets.append('M=D')
         self.write()
@@ -255,6 +255,7 @@ class Coder(object):
 
 
 def main():
+    global srcName, tgtName
     parser = argparse.ArgumentParser()
     parser.add_argument('inputFile', type=str, default='MemoryAccess/BasicTest/BasicTest.vm', help='the vm file to translate')
     args = parser.parse_args()
@@ -283,9 +284,16 @@ def main():
             coder.writePushPop(op, arg1, arg2)
         # pdb.set_trace()
 
+def calcRatio():
+    srcLine = len(open(srcName).readlines())
+    tgtLine = len(open(tgtName).readlines())
+    return tgtLine / float(srcLine)
+
 if __name__ == '__main__':
     start_t = time.time()
     main()
     end_t = time.time()
     elapse = int(round((end_t - start_t) * 1000))
     print('It takes %dms to translate.' % elapse)
+    print('Translate ratio is %.2f' % calcRatio())
+
