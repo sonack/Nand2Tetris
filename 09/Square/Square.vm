@@ -1,0 +1,411 @@
+function Square.new 0
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push pointer 0
+call Square.draw 1
+pop temp 0
+push pointer 0
+return
+function Square.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Square.draw 2
+push argument 0
+pop pointer 0
+push constant 32
+push constant 16
+call Math.multiply 2
+push this 1
+call Math.multiply 2
+push this 0
+add
+pop local 0
+push constant 16384
+push local 0
+add
+pop local 1
+push local 1
+push constant 0
+add
+push constant 8176
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 32
+add
+push constant 13400
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 64
+add
+push constant 15036
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 96
+add
+push constant 13404
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 128
+add
+push constant 28694
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 160
+add
+push constant 7090
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 192
+add
+push constant 10281
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 224
+add
+push constant 14301
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 256
+add
+push constant 14397
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 288
+add
+push constant 8845
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 320
+add
+push constant 19117
+neg
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 352
+add
+push constant 14297
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 384
+add
+push constant 25678
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 416
+add
+push constant 10180
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 448
+add
+push constant 1728
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 480
+add
+push constant 3808
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Square.erase 2
+push argument 0
+pop pointer 0
+push constant 32
+push constant 16
+call Math.multiply 2
+push this 1
+call Math.multiply 2
+push this 0
+add
+pop local 0
+push constant 16384
+push local 0
+add
+pop local 1
+push local 1
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Square.incSize 0
+push argument 0
+pop pointer 0
+push constant 11
+call String.new 1
+push constant 70
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 87
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Square.decSize 0
+push argument 0
+pop pointer 0
+push constant 12
+call String.new 1
+push constant 72
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 87
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Square.moveUp 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push this 1
+push constant 1
+sub
+pop this 1
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Square.moveDown 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 15
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push this 1
+push constant 1
+add
+pop this 1
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Square.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push this 0
+push constant 1
+sub
+pop this 0
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Square.moveRight 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 31
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Square.erase 1
+pop temp 0
+push this 0
+push constant 1
+add
+pop this 0
+push pointer 0
+call Square.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return

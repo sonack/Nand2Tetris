@@ -7,8 +7,14 @@
 class Main {
    function void main() {
       /* Prints some text using the standard library. */
+      var String test;
       do Output.printString("Hello world!");
       do Output.println();      // New line
+   
+      let test = "test233ggg9999";
+      do Output.printString(test);
+      do Output.backSpace();
+      do Output.printString("123");
       return;
    }
 }

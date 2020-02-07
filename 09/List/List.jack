@@ -25,7 +25,8 @@ class List {
         let current = this;  // of this list
         while (~(current = null)) {
             do Output.printInt(current.getData());
-            do Output.printChar(32); // prints a space
+            // do Output.printChar(32); // prints a space
+            do Output.println();
             let current = current.getNext();
         }
         return;
