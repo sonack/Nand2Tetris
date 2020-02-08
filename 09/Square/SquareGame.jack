@@ -41,7 +41,7 @@ class SquareGame {
       if (direction = 2) { do square.moveDown(); }
       if (direction = 3) { do square.moveLeft(); }
       if (direction = 4) { do square.moveRight(); }
-      do Sys.wait(50);  // delays the next movement
+      do Sys.wait(5);  // delays the next movement
       return;
    }
 
@@ -65,11 +65,13 @@ class SquareGame {
          if (key = 130) { let direction = 3; }   // left arrow
          if (key = 132) { let direction = 4; }   // right arrow
 
+         do moveSquare();
+         let direction = 0;
          // waits for the key to be released
          while (~(key = 0)) {
             let key = Keyboard.keyPressed();
-            do moveSquare();
-            let direction = 0;
+            // do moveSquare();
+            // let direction = 0;
          }
      } // while
      return;
