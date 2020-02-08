@@ -3,8 +3,10 @@
 from enum import Enum
 from xml.sax.saxutils import escape
 import argparse
+import os.path as osp
 import glob
 import pdb
+import os
 
 # token Type
 tType = Enum('token Type', 
@@ -203,4 +205,9 @@ if __name__ == '__main__':
         else:
             tokenizer.writeMsg2XML('</tokens>')
             tokenizer.closeXML()
-        print('Save tokenized file to {}.'.format(srcName.replace('.jack', 'TG.xml')))
+        tgtName = srcName.replace('.jack', 'TG.xml')
+        cmpName = srcName.replace('.jack', 'T.xml')
+        print('Save tokenized file to {}.'.format(tgtName))
+        print('Comparing {} to {} ... '.format(tgtName, cmpName))
+        os.system('TextComparer.sh {} {}'.format(tgtName, cmpName))
+        
