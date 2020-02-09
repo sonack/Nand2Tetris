@@ -22,6 +22,10 @@ tType = Enum('token Type',
     )
 tTypeStr = ['keyword', 'symbol', 'identifier', 'integerConstant', 'stringConstant']
 
+def raise_error(errmsg, lineNum):
+    print('Error in Line {}: {}'.format(lineNum + 1, errmsg))
+    sys.exit(-1)
+
 class JackTokenizer(object):
     def __init__(self, writeToken = False):
         self.writeToken = writeToken
@@ -55,6 +59,9 @@ class JackTokenizer(object):
         self.out_f.write('<{}> {} </{}>\n'.format(token_type_str, escape(self.token_str), token_type_str))
         self.out_f.flush()
 
+    def getLineNumber(self):
+        return self.cur_fp
+    
     def hasMoreTokens(self):
         if self.line_pos < self.line_len:
             return True
@@ -126,7 +133,8 @@ class JackTokenizer(object):
                         break
                     end_pos += 1
                 if end_pos == self.line_len:
-                    raise ValueError('String constant double quotes are not enclosed!')
+                    bad_str = valid_line[1:]
+                    raise_error('String constant "{}" double quotes are not enclosed!'.format(bad_str), self.getLineNumber())
                 # remove ""
                 self.token_str = self.cur_line[self.line_pos + 1 : end_pos]
                 self.line_pos = end_pos + 1
@@ -141,6 +149,8 @@ class JackTokenizer(object):
                         break
                 if not is_keyword:
                     # identifier
+                    if not (first_char.isalpha() or first_char == '_'):
+                        raise_error('Unexpected identifier starts with "{}".'.format(first_char), self.getLineNumber())
                     self.token_type = tType.IDENTIFIER
                     end_pos = self.line_pos + 1
                     while end_pos < self.line_len:
@@ -197,10 +207,13 @@ class CompilationEngine():
         # nothing to eat left
         if self.token_exhausted:
             err_info = 'Expected '
-            for idx, t, v in enumerate(expected.items()):
-                err_info += '{} of type {} {}'.format(' , '.join(v), tTypeStr[t.value], ', or ' if idx < len(expected) - 1 else ', but got nothing.')
-            raise ValueError(err_info)
-            sys.exit(-1)
+            for idx, (t, v) in enumerate(expected.items()):
+                if v[0] != 'any':
+                    v = ('"' + ve + '"' for ve in v)
+                err_info += '{} of type {} {}'.format('、'.join(v), tTypeStr[t.value], ',or ' if idx < len(expected) - 1 else ', but got nothing.')
+            # raise ValueError(err_info)
+            # sys.exit(-1)
+            raise_error(err_info, self.tokenizer.getLineNumber())
         
         curType = self.tokenizer.tokenType()
         curToken = self.tokenizer.tokenStr()
@@ -208,14 +221,15 @@ class CompilationEngine():
         # self.curToken = curToken
 
         # deal with singular element list 
-        expected = { k: (v if isinstance(v, (list, tuple)) or (isinstance(v, str) and len(v) > 1) else (v,) if v else curToken)  for k, v in expected.items() }
-
-
-        if curType not in expected or (curToken not in expected[curType]):
+        expected = { k: (v if isinstance(v, (list, tuple)) or (isinstance(v, str) and len(v) > 1) else (v,) if v else ('any',))  for k, v in expected.items() }
+        if (curType not in expected) or ((expected[curType][0] != 'any') and (curToken not in expected[curType])):
             err_info = 'Expected '
             for idx, (t, v) in enumerate(expected.items()):
-                err_info += '{} of type {} {}'.format(' , '.join(v), tTypeStr[t.value], ', or ' if idx < len(expected) - 1 else ', but got {} of type {}.'.format(curToken, tTypeStr[curType.value]))
-            raise ValueError(err_info)
+                if v[0] != 'any':
+                    v = ('"' + ve + '"' for ve in v)
+                err_info += '{} of type {}{}'.format('、'.join(v), tTypeStr[t.value], ', or ' if idx < len(expected) - 1 else ', but got "{}" of type {}.'.format(curToken, tTypeStr[curType.value]))
+            # raise ValueError(err_info)
+            raise_error(err_info, self.tokenizer.getLineNumber())
         else:
             self.out_f.write('{indentspace}<{type}> {token} </{type}>\n'.format(type = tTypeStr[self.curType.value], token = escape(self.curToken), indentspace = '  ' * self.indentCnt))
             # prepare next eat food
@@ -250,6 +264,14 @@ class CompilationEngine():
     def _isElse(self):
         return self.curType == tType.KEYWORD and self.curToken == 'else'
 
+    def _isExpression(self):
+        if self.curType in [tType.INT_CONST, tType.STRING_CONST, tType.IDENTIFIER] or (self.curType == tType.KEYWORD and self.curToken in ['true', 'false', 'null', 'this']) or (self.curType == tType.SYMBOL and self.curToken in '-~('):
+            return True
+        return False
+
+    def _isIdentifier(self):
+        return self.curType == tType.IDENTIFIER
+    
     def compileClassVarDec(self):
         self.out_f.write('{}<classVarDec>\n'.format('  ' * self.indentCnt))
         self.indentCnt += 1
@@ -413,11 +435,12 @@ class CompilationEngine():
         self.out_f.write('{}<expressionList>\n'.format('  ' * self.indentCnt))
         self.indentCnt += 1
         # expressionList always followed by ')'
-        if not self._isSymbolX(')'):
+        # if not self._isSymbolX(')'):
+        if self._isExpression():
             self.compileExpression()
-        while self._isSymbolX(','):
-            self.eat({tType.SYMBOL: ','})
-            self.compileExpression()
+            while self._isSymbolX(','):
+                self.eat({tType.SYMBOL: ','})
+                self.compileExpression()
         self.indentCnt -= 1
         self.out_f.write('{}</expressionList>\n'.format('  ' * self.indentCnt))
 
@@ -431,27 +454,28 @@ class CompilationEngine():
             self.eat({tType.SYMBOL: '('})
             self.compileExpression()
             self.eat({tType.SYMBOL: ')'})
-        else:
+        elif self._isIdentifier():
+            self.eat({tType.IDENTIFIER: None})  # varName, varName[], varName() varName.foo()
+            if self._isSymbolX('['):    # varName[]
+                self.eat({tType.SYMBOL: '['})
+                self.compileExpression()
+                self.eat({tType.SYMBOL: ']'})
+            elif self._isSymbolX(('.(')):  # subroutineCall
+                if self._isSymbolX('.'):
+                    # (className|varName).subroutineName
+                    self.eat({tType.SYMBOL: '.'})
+                    self.eat({tType.IDENTIFIER: None})
+                self.eat({tType.SYMBOL: '('})
+                self.compileExpressionList()
+                self.eat({tType.SYMBOL: ')'})
+            else:   # varName only
+                pass
+        else: # int_const, string_const, keyword_const
             self.eat({
                 tType.INT_CONST: None,
                 tType.STRING_CONST: None,
-                tType.KEYWORD: ['true', 'false', 'null', 'this'],
-                tType.IDENTIFIER: None, # varName, varName[], varName() varName.foo()
+                tType.KEYWORD: ['true', 'false', 'null', 'this']
             })
-        if self._isSymbolX('['):    # varName[]
-            self.eat({tType.SYMBOL: '['})
-            self.compileExpression()
-            self.eat({tType.SYMBOL: ']'})
-        elif self._isSymbolX(('.(')):  # subroutineCall
-            if self._isSymbolX('.'):
-                # (className|varName).subroutineName
-                self.eat({tType.SYMBOL: '.'})
-                self.eat({tType.IDENTIFIER: None})
-            self.eat({tType.SYMBOL: '('})
-            self.compileExpressionList()
-            self.eat({tType.SYMBOL: ')'})
-        else: # varName
-            pass
         self.indentCnt -= 1
         self.out_f.write('{}</term>\n'.format('  ' * self.indentCnt))
 
@@ -534,6 +558,9 @@ class CompilationEngine():
         if self._isClass():
             self.compileClass()
         self.out_f.close()
+        if self.tokenizer.hasMoreTokens():
+            self.tokenizer.advance()
+            raise_error('Unexpected "{}" of type {}.'.format(self.curToken, tTypeStr[self.curType.value]), self.tokenizer.getLineNumber())
 
 
 
@@ -552,9 +579,10 @@ def JackTokenizerMain():
     else:
         srcNames = [srcName]
     
-    tokenizer = JackTokenizer()
+    tokenizer = JackTokenizer(writeToken=True)
     
     for srcName in srcNames:
+        print('=' * 50)
         print('Tokenizing file {}...'.format(srcName))
         tokenizer.setFileName(srcName)
         idx = 0
@@ -600,6 +628,7 @@ def Main():
     cEngine = CompilationEngine()
     
     for srcName in srcNames:
+        print('=' * 50)
         print('Parsing file {}...'.format(srcName))
         cEngine.setFileName(srcName)
         cEngine.parse()
@@ -610,7 +639,7 @@ def Main():
         print('Comparing {} to {} ... '.format(tgtName, cmpName))
         os.system('TextComparer.sh {} {}'.format(tgtName, cmpName))
         diffRet = os.system('diff --strip-trailing-cr {} {}'.format(tgtName, cmpName))
-        print('"diff {} {}" result is {}'.format(tgtName, cmpName, diffRet))
+        print('"diff {} {}" result is {}'.format(tgtName, cmpName, diffRet // 255))
 
 if __name__ == '__main__':
     # JackTokenizerMain()
