@@ -10,7 +10,13 @@
 class Main {
 
    function void main() {
-      do Output.printInt(1 + (2 * 3));
+      // do Output.printInt((1 + (2 * 3)) / 4 + ((3 * 2) + 1) + ((-1) * 2));
+      var int a, b, c;
+      let a = 2;
+      let b = 3;
+      let c = a * b;
+      do Output.printInt(-1 + c) ;
+
       return;
    }
 

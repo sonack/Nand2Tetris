@@ -44,7 +44,7 @@ class Main {
     	    let mask = Main.nextMask(mask);
     	
     	    if (~(position > 16)) {
-    	
+                do Output.printInt(position);
     	        if (~((value & mask) = 0)) {
     	            do Memory.poke(8000 + position, 1);
        	        }
