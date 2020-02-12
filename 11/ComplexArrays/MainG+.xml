@@ -1,0 +1,1304 @@
+<class>
+  <keyword> class </keyword>
+  <identifierDetails>
+    <identifier> Main </identifier>
+    <category> class </category>
+    <defineOrUsed> define </defineOrUsed>
+  </identifierDetails>
+  <symbol> { </symbol>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> main </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <identifierDetails>
+          <identifier> Array </identifier>
+          <category> class </category>
+          <defineOrUsed> used </defineOrUsed>
+        </identifierDetails>
+        <identifierDetails>
+          <identifier> a </identifier>
+          <category> var </category>
+          <index> 0 </index>
+          <defineOrUsed> define </defineOrUsed>
+        </identifierDetails>
+        <symbol> , </symbol>
+        <identifierDetails>
+          <identifier> b </identifier>
+          <category> var </category>
+          <index> 1 </index>
+          <defineOrUsed> define </defineOrUsed>
+        </identifierDetails>
+        <symbol> , </symbol>
+        <identifierDetails>
+          <identifier> c </identifier>
+          <category> var </category>
+          <index> 2 </index>
+          <defineOrUsed> define </defineOrUsed>
+        </identifierDetails>
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> a </identifier>
+            <category> var </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Array </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> new </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 10 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> b </identifier>
+            <category> var </category>
+            <index> 1 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Array </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> new </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 5 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> c </identifier>
+            <category> var </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Array </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> new </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> a </identifier>
+            <category> var </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <integerConstant> 3 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 2 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> a </identifier>
+            <category> var </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <integerConstant> 4 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 8 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> a </identifier>
+            <category> var </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <integerConstant> 5 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 4 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> b </identifier>
+            <category> var </category>
+            <index> 1 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> a </identifier>
+                <category> var </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 3 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> a </identifier>
+                <category> var </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 3 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <integerConstant> 3 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> a </identifier>
+            <category> var </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> b </identifier>
+                <category> var </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> a </identifier>
+                    <category> var </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 3 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> a </identifier>
+                <category> var </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> a </identifier>
+                    <category> var </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 5 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+            <symbol> * </symbol>
+            <term>
+              <identifierDetails>
+                <identifier> b </identifier>
+                <category> var </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <integerConstant> 7 </integerConstant>
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <identifierDetails>
+                            <identifier> a </identifier>
+                            <category> var </category>
+                            <index> 0 </index>
+                            <defineOrUsed> used </defineOrUsed>
+                          </identifierDetails>
+                          <symbol> [ </symbol>
+                          <expression>
+                            <term>
+                              <integerConstant> 3 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ] </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <identifierDetails>
+                        <identifier> Main </identifier>
+                        <category> class </category>
+                        <defineOrUsed> used </defineOrUsed>
+                      </identifierDetails>
+                      <symbol> . </symbol>
+                      <identifierDetails>
+                        <identifier> double </identifier>
+                        <category> subroutine </category>
+                        <defineOrUsed> used </defineOrUsed>
+                      </identifierDetails>
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <integerConstant> 2 </integerConstant>
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> c </identifier>
+            <category> var </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> c </identifier>
+            <category> var </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printString </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Test 1: expected result: 5; actual result:  </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printInt </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> b </identifier>
+                  <category> var </category>
+                  <index> 1 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+                <symbol> [ </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 2 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ] </symbol>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> println </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printString </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Test 2: expected result: 40; actual result:  </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printInt </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> a </identifier>
+                  <category> var </category>
+                  <index> 0 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+                <symbol> [ </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 5 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ] </symbol>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> println </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printString </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Test 3: expected result: 0; actual result:  </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printInt </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> c </identifier>
+                  <category> var </category>
+                  <index> 2 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> println </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> c </identifier>
+            <category> var </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Main </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> fill </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> a </identifier>
+                      <category> var </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 10 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> a </identifier>
+                    <category> var </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 3 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 33 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> a </identifier>
+                    <category> var </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 7 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> c </identifier>
+                <category> var </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 77 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> b </identifier>
+                <category> var </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> a </identifier>
+                    <category> var </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 3 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> b </identifier>
+                <category> var </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> b </identifier>
+                    <category> var </category>
+                    <index> 1 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifierDetails>
+                    <identifier> c </identifier>
+                    <category> var </category>
+                    <index> 2 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printString </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Test 4: expected result: 77; actual result:  </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printInt </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> c </identifier>
+                  <category> var </category>
+                  <index> 2 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+                <symbol> [ </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ] </symbol>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> println </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printString </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Test 5: expected result: 110; actual result:  </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> printInt </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> b </identifier>
+                  <category> var </category>
+                  <index> 1 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+                <symbol> [ </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ] </symbol>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Output </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> println </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> double </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> a </identifier>
+        <category> argument </category>
+        <index> 0 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> a </identifier>
+                <category> argument </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+            <symbol> * </symbol>
+            <term>
+              <integerConstant> 2 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> fill </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+      <identifierDetails>
+        <identifier> Array </identifier>
+        <category> class </category>
+        <defineOrUsed> used </defineOrUsed>
+      </identifierDetails>
+      <identifierDetails>
+        <identifier> a </identifier>
+        <category> argument </category>
+        <index> 0 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> size </identifier>
+        <category> argument </category>
+        <index> 1 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> size </identifier>
+                <category> argument </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+            <symbol> &gt; </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> size </identifier>
+                <category> argument </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> size </identifier>
+                    <category> argument </category>
+                    <index> 1 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                </term>
+                <symbol> - </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> a </identifier>
+                <category> argument </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> size </identifier>
+                    <category> argument </category>
+                    <index> 1 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> Array </identifier>
+                    <category> class </category>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> . </symbol>
+                  <identifierDetails>
+                    <identifier> new </identifier>
+                    <category> subroutine </category>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <integerConstant> 3 </integerConstant>
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

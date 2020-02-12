@@ -1,0 +1,1367 @@
+<class>
+  <keyword> class </keyword>
+  <identifierDetails>
+    <identifier> Bat </identifier>
+    <category> class </category>
+    <defineOrUsed> define </defineOrUsed>
+  </identifierDetails>
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> x </identifier>
+      <category> field </category>
+      <index> 0 </index>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> , </symbol>
+    <identifierDetails>
+      <identifier> y </identifier>
+      <category> field </category>
+      <index> 1 </index>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> width </identifier>
+      <category> field </category>
+      <index> 2 </index>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> , </symbol>
+    <identifierDetails>
+      <identifier> height </identifier>
+      <category> field </category>
+      <index> 3 </index>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> direction </identifier>
+      <category> field </category>
+      <index> 4 </index>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> constructor </keyword>
+    <identifierDetails>
+      <identifier> Bat </identifier>
+      <category> class </category>
+      <defineOrUsed> used </defineOrUsed>
+    </identifierDetails>
+    <identifierDetails>
+      <identifier> new </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Ax </identifier>
+        <category> argument </category>
+        <index> 0 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Ay </identifier>
+        <category> argument </category>
+        <index> 1 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Awidth </identifier>
+        <category> argument </category>
+        <index> 2 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Aheight </identifier>
+        <category> argument </category>
+        <index> 3 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> x </identifier>
+            <category> field </category>
+            <index> 0 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Ax </identifier>
+                <category> argument </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> y </identifier>
+            <category> field </category>
+            <index> 1 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Ay </identifier>
+                <category> argument </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> width </identifier>
+            <category> field </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Awidth </identifier>
+                <category> argument </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> height </identifier>
+            <category> field </category>
+            <index> 3 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Aheight </identifier>
+                <category> argument </category>
+                <index> 3 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> direction </identifier>
+            <category> field </category>
+            <index> 4 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 2 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> show </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <keyword> this </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> dispose </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Memory </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> deAlloc </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> this </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> show </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Screen </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> setColor </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> true </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> draw </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> hide </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Screen </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> setColor </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> false </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> draw </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> draw </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> Screen </identifier>
+            <category> class </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> . </symbol>
+          <identifierDetails>
+            <identifier> drawRectangle </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> x </identifier>
+                  <category> field </category>
+                  <index> 0 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> y </identifier>
+                  <category> field </category>
+                  <index> 1 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> x </identifier>
+                  <category> field </category>
+                  <index> 0 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+              <symbol> + </symbol>
+              <term>
+                <identifierDetails>
+                  <identifier> width </identifier>
+                  <category> field </category>
+                  <index> 2 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifierDetails>
+                  <identifier> y </identifier>
+                  <category> field </category>
+                  <index> 1 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+              <symbol> + </symbol>
+              <term>
+                <identifierDetails>
+                  <identifier> height </identifier>
+                  <category> field </category>
+                  <index> 3 </index>
+                  <defineOrUsed> used </defineOrUsed>
+                </identifierDetails>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> setDirection </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Adirection </identifier>
+        <category> argument </category>
+        <index> 1 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> direction </identifier>
+            <category> field </category>
+            <index> 4 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Adirection </identifier>
+                <category> argument </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> getLeft </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> x </identifier>
+                <category> field </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> int </keyword>
+    <identifierDetails>
+      <identifier> getRight </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> x </identifier>
+                <category> field </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <identifierDetails>
+                <identifier> width </identifier>
+                <category> field </category>
+                <index> 2 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> setWidth </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifierDetails>
+        <identifier> Awidth </identifier>
+        <category> argument </category>
+        <index> 1 </index>
+        <defineOrUsed> define </defineOrUsed>
+      </identifierDetails>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> hide </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifierDetails>
+            <identifier> width </identifier>
+            <category> field </category>
+            <index> 2 </index>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> Awidth </identifier>
+                <category> argument </category>
+                <index> 1 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifierDetails>
+            <identifier> show </identifier>
+            <category> subroutine </category>
+            <defineOrUsed> used </defineOrUsed>
+          </identifierDetails>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifierDetails>
+      <identifier> move </identifier>
+      <category> subroutine </category>
+      <defineOrUsed> define </defineOrUsed>
+    </identifierDetails>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifierDetails>
+                <identifier> direction </identifier>
+                <category> field </category>
+                <index> 4 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> x </identifier>
+                <category> field </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> x </identifier>
+                    <category> field </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                </term>
+                <symbol> - </symbol>
+                <term>
+                  <integerConstant> 4 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> x </identifier>
+                    <category> field </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifierDetails>
+                    <identifier> x </identifier>
+                    <category> field </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> setColor </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <keyword> false </keyword>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> drawRectangle </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifierDetails>
+                          <identifier> x </identifier>
+                          <category> field </category>
+                          <index> 0 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <identifierDetails>
+                          <identifier> width </identifier>
+                          <category> field </category>
+                          <index> 2 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifierDetails>
+                          <identifier> x </identifier>
+                          <category> field </category>
+                          <index> 0 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <identifierDetails>
+                          <identifier> width </identifier>
+                          <category> field </category>
+                          <index> 2 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <integerConstant> 4 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifierDetails>
+                      <identifier> height </identifier>
+                      <category> field </category>
+                      <index> 3 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> setColor </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <keyword> true </keyword>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> drawRectangle </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> x </identifier>
+                      <category> field </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> x </identifier>
+                      <category> field </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <integerConstant> 3 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifierDetails>
+                      <identifier> height </identifier>
+                      <category> field </category>
+                      <index> 3 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifierDetails>
+                <identifier> x </identifier>
+                <category> field </category>
+                <index> 0 </index>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifierDetails>
+                    <identifier> x </identifier>
+                    <category> field </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 4 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifierDetails>
+                        <identifier> x </identifier>
+                        <category> field </category>
+                        <index> 0 </index>
+                        <defineOrUsed> used </defineOrUsed>
+                      </identifierDetails>
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <identifierDetails>
+                        <identifier> width </identifier>
+                        <category> field </category>
+                        <index> 2 </index>
+                        <defineOrUsed> used </defineOrUsed>
+                      </identifierDetails>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <integerConstant> 511 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifierDetails>
+                    <identifier> x </identifier>
+                    <category> field </category>
+                    <index> 0 </index>
+                    <defineOrUsed> used </defineOrUsed>
+                  </identifierDetails>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 511 </integerConstant>
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <identifierDetails>
+                        <identifier> width </identifier>
+                        <category> field </category>
+                        <index> 2 </index>
+                        <defineOrUsed> used </defineOrUsed>
+                      </identifierDetails>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> setColor </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <keyword> false </keyword>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> drawRectangle </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> x </identifier>
+                      <category> field </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> - </symbol>
+                  <term>
+                    <integerConstant> 4 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> x </identifier>
+                      <category> field </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> - </symbol>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifierDetails>
+                      <identifier> height </identifier>
+                      <category> field </category>
+                      <index> 3 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> setColor </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <keyword> true </keyword>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifierDetails>
+                <identifier> Screen </identifier>
+                <category> class </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> . </symbol>
+              <identifierDetails>
+                <identifier> drawRectangle </identifier>
+                <category> subroutine </category>
+                <defineOrUsed> used </defineOrUsed>
+              </identifierDetails>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifierDetails>
+                          <identifier> x </identifier>
+                          <category> field </category>
+                          <index> 0 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <identifierDetails>
+                          <identifier> width </identifier>
+                          <category> field </category>
+                          <index> 2 </index>
+                          <defineOrUsed> used </defineOrUsed>
+                        </identifierDetails>
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                  <symbol> - </symbol>
+                  <term>
+                    <integerConstant> 3 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> x </identifier>
+                      <category> field </category>
+                      <index> 0 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifierDetails>
+                      <identifier> width </identifier>
+                      <category> field </category>
+                      <index> 2 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifierDetails>
+                      <identifier> y </identifier>
+                      <category> field </category>
+                      <index> 1 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifierDetails>
+                      <identifier> height </identifier>
+                      <category> field </category>
+                      <index> 3 </index>
+                      <defineOrUsed> used </defineOrUsed>
+                    </identifierDetails>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

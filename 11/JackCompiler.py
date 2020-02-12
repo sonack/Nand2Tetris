@@ -8,6 +8,7 @@ import glob
 import pdb
 import os
 import sys
+import time
 
 # token Type
 tType = Enum('token Type', 
@@ -139,27 +140,20 @@ class JackTokenizer(object):
                 self.token_str = self.cur_line[self.line_pos + 1 : end_pos]
                 self.line_pos = end_pos + 1
             else:
-                is_keyword = False
-                for kw in self.keywords:
-                    if valid_line.startswith(kw):
-                        is_keyword = True
-                        self.token_str = kw
-                        self.token_type = tType.KEYWORD
-                        self.line_pos += len(kw)
+                # identifier or keyword
+                # notice that keywords are all valid identifier
+                if not (first_char.isalpha() or first_char == '_'):
+                    raise_error('Unexpected identifier starts with "{}".'.format(first_char), self.getLineNumber())
+                end_pos = self.line_pos + 1
+                while end_pos < self.line_len:
+                    c = self.cur_line[end_pos]
+                    if not c.isalnum() and c != '_':
                         break
-                if not is_keyword:
-                    # identifier
-                    if not (first_char.isalpha() or first_char == '_'):
-                        raise_error('Unexpected identifier starts with "{}".'.format(first_char), self.getLineNumber())
-                    self.token_type = tType.IDENTIFIER
-                    end_pos = self.line_pos + 1
-                    while end_pos < self.line_len:
-                        c = self.cur_line[end_pos]
-                        if not c.isalnum() and c != '_':
-                            break
-                        end_pos += 1
-                    self.token_str = self.cur_line[self.line_pos : end_pos]
-                    self.line_pos = end_pos
+                    end_pos += 1
+                self.token_str = self.cur_line[self.line_pos : end_pos]
+                self.token_type = tType.KEYWORD if self.token_str in self.keywords else tType.IDENTIFIER
+                self.line_pos = end_pos
+
             if self.writeToken:
                 self.writeToken2XML()
 
@@ -456,16 +450,35 @@ class CompilationEngine():
         self.compileIdentifierDetails(None, None, False)
         # self.eat({tType.IDENTIFIER: None})
         # '[' expression ']'
+        lhs_is_arr = False
         if self._isSymbolX('['):
+            lhs_is_arr = True
+            name_kind = self.symTable.KindOf(name)
+            assert name_kind, 'Identifier {} with "[]" must be variable to serve as array.'.format(name)
+            seg = self.kind2seg[name_kind.value]
+            index = self.symTable.IndexOf(name)
+            self.vmwriter.writePush(seg, index)
             self.eat({tType.SYMBOL: '['})
             self.compileExpression()
+            self.vmwriter.writeArithmetic('add')
             self.eat({tType.SYMBOL: ']'})
+
         self.eat({tType.SYMBOL: '='})
         self.compileExpression()
         self.eat({tType.SYMBOL: ';'})
-        seg = self.kind2seg[self.symTable.KindOf(name).value]
-        index = self.symTable.IndexOf(name)
-        self.vmwriter.writePop(seg, index)
+
+        if lhs_is_arr:
+            # rhs is on the stack top            
+            self.vmwriter.writePop('temp', 0)
+            # that = lhs
+            self.vmwriter.writePop('pointer', 1)
+            self.vmwriter.writePush('temp', 0)
+            self.vmwriter.writePop('that', 0)
+        else:
+            seg = self.kind2seg[self.symTable.KindOf(name).value]
+            index = self.symTable.IndexOf(name)
+            self.vmwriter.writePop(seg, index)
+        
         self.indentCnt -= 1
         self.out_f.write('{}</letStatement>\n'.format('  ' * self.indentCnt))
 
@@ -650,7 +663,6 @@ class CompilationEngine():
             self.compileTerm()
             # TODO:'neg' or 'not'
             self.vmwriter.writeArithmetic(self.unaryOp2cmd[unaryOp])
-
         elif self._isSymbolX('('):  # '(' expression ')'
             self.eat({tType.SYMBOL: '('})
             self.compileExpression()
@@ -663,8 +675,19 @@ class CompilationEngine():
             self.compileIdentifierDetails(None, None, False)
             # self.eat({tType.IDENTIFIER: None})  # varName, varName[], varName() varName.foo()
             if self._isSymbolX('['):    # varName[]
+                assert name_type, 'Identifier {} with "[]" must be variable to serve as array.'.format(name)
+                seg = self.kind2seg[name_kind.value]
+                index = self.symTable.IndexOf(name)
+                # push base address "arr“
+                self.vmwriter.writePush(seg, index)
                 self.eat({tType.SYMBOL: '['})
+                # index evaluated value has been on stack top
                 self.compileExpression()
+                self.vmwriter.writeArithmetic('add')
+
+                self.vmwriter.writePop('pointer', 1)
+                self.vmwriter.writePush('that', 0)
+
                 self.eat({tType.SYMBOL: ']'})
             elif self._isSymbolX(('.(')):  # subroutineCall
                 called_by_class = False
@@ -710,9 +733,17 @@ class CompilationEngine():
                     self.vmwriter.writePush('constant', 0)
                 elif self.curToken == 'this':
                     self.vmwriter.writePush('pointer', 0)
-            else:   # tType.STRING_CONST
-                pass
-
+            elif self.curType == tType.STRING_CONST:
+                # tType.STRING_CONST
+                str_const = self.curToken
+                length = len(str_const)
+                self.vmwriter.writePush('constant', length)
+                self.vmwriter.writeCall('String.new', 1)
+                # 'this' is returned and put on the stack topmost
+                for c in str_const:
+                    self.vmwriter.writePush('constant', ord(c))
+                    self.vmwriter.writeCall('String.appendChar', 2)
+            
             # TODO
             self.eat({
                 tType.INT_CONST: None,
@@ -920,6 +951,7 @@ class VMWriter():
             self.close()
         out_file = in_file.replace('.jack', '.vm')
         self.out_f = open(out_file, 'w')
+        self.out_f.write('// Created on {} by sonack compiler.\n'.format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
     
     # segments:
     # local, argument, this, that, constant, static, pointer, temp

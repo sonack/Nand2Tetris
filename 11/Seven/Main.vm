@@ -1,3 +1,4 @@
+// Created on 2020-02-13 00:42:57 by sonack compiler.
 function Main.main 3
 push constant 2
 pop local 0
