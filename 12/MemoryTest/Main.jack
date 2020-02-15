@@ -37,6 +37,14 @@ class Main {
         do c.dispose();
         do b.dispose();
         
+        do Output.printString("hello world");
+        do Output.printChar(String.backSpace());
+
+        do Output.printChar(String.newLine());
+        do Output.printString("hello world");
+        do Memory.inspect();
+
+
         return;
     }
 }

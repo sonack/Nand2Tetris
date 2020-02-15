@@ -496,6 +496,9 @@ class CompilationEngine():
         self.eat({tType.SYMBOL: '('})
         # cond exp
         self.compileExpression()
+
+        # self.vmwriter.writePush('constant', 0)
+        # self.vmwriter.writeArithmetic('eq')
         self.vmwriter.writeArithmetic('not')
 
         self.eat({tType.SYMBOL: ')'})
@@ -531,6 +534,8 @@ class CompilationEngine():
         self.eat({tType.KEYWORD: 'while'})
         self.eat({tType.SYMBOL: '('})
         self.compileExpression()
+        # self.vmwriter.writePush('constant', 0)
+        # self.vmwriter.writeArithmetic('eq')
         self.vmwriter.writeArithmetic('not')
         self.vmwriter.writeIf(cont_label)
 

@@ -10,34 +10,296 @@
  * the screen is indexed (0,0).
  */
 class Screen {
+    static boolean cur_color;
+    static Array screen;
+    static Array twoToThe;
+    static Array maskL, maskR;
 
     /** Initializes the Screen. */
     function void init() {
+        var int i;
+
+        let cur_color = true;
+        let screen = 16384;
+        let twoToThe = Math.twoToThe();
+
+        let maskL = Array.new(16);
+        let maskL[0] = -1;
+        let i = 1;
+        while (i < 16) {
+            let maskL[i] = maskL[i - 1] - twoToThe[i - 1];
+            let i = i + 1;
+        }
+
+        let maskR = Array.new(16);
+        let maskR[0] = 1;
+        let i = 1;
+        while (i < 16) {
+            let maskR[i] = maskR[i - 1] + twoToThe[i];
+            let i = i + 1;
+        }
+
+        return;
     }
 
     /** Erases the entire screen. */
     function void clearScreen() {
+        var int reg;
+        let reg = 0;
+        while (~(reg = 8096)) {
+            let screen[reg] = 0;
+            let reg = reg + 1;
+        }
+        return;
     }
 
     /** Sets the current color, to be used for all subsequent drawXXX commands.
      *  Black is represented by true, white by false. */
     function void setColor(boolean b) {
+        let cur_color = b;
+        return;
     }
 
     /** Draws the (x,y) pixel, using the current color. */
     function void drawPixel(int x, int y) {
+        var int addr, bit_pos, word, stroke;
+        let addr = (32 * y) + (x / 16);
+        let bit_pos = Math.mod(x, 16);
+        let word = screen[addr];
+        let stroke = twoToThe[bit_pos];
+    
+        if (cur_color) {
+            let word = word | stroke;
+        } else {
+            let word = word & (~stroke);
+        }
+
+        let screen[addr] = word;
+        return;
     }
 
+    
     /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
     function void drawLine(int x1, int y1, int x2, int y2) {
+        var int a, b, diff, tmp;
+        var int dx, dy;
+        var int dy_dir;
+        var int addr_start, start_stroke, addr_end, end_stroke, length, i, word, cur;
+
+        // vertical line
+        if (x1 = x2) {
+            if (y1 > y2) {
+                let tmp = y1;
+                let y1 = y2;
+                let y2 = tmp;
+            }
+                
+            let addr_start = (32 * y1) + (x1 / 16);
+            let addr_end = (32 * y2) + (x2 / 16);
+            let start_stroke = twoToThe[Math.mod(x1, 16)];
+            let i = addr_start;
+
+            while (~(i > addr_end)) {
+                if (cur_color) {
+                    let word = word | start_stroke;
+                } else {
+                    let word = word & (~start_stroke);
+                }
+                let screen[i] = word;
+                let i = i + 32;
+            }
+            
+            // while (~(y1 > y2)) {
+            //     do Screen.drawPixel(x1, y1);
+            //     let y1 = y1 + 1;
+            // }
+            return;
+        }
+
+        // horizontal line
+        if (y1 = y2) {
+            if (x1 > x2) {
+                let tmp = x1;
+                let x1 = x2;
+                let x2 = tmp;
+            }
+
+            let addr_start = (32 * y1) + (x1 / 16);
+            let addr_end = (32 * y2) + (x2 / 16);
+
+            // within single memory unit
+            if (addr_start = addr_end) {
+                while (~(x1 > x2)) {
+                    do Screen.drawPixel(x1, y1);
+                    let x1 = x1 + 1;
+                }
+            } else {
+                let start_stroke = maskL[Math.mod(x1, 16)];
+                let end_stroke = maskR[Math.mod(x2, 16)];
+                let length = (addr_end - addr_start) - 1;
+                let cur = addr_start;
+                let word = screen[cur];
+                if (cur_color) {
+                    let word = word | start_stroke;
+                }
+                else {
+                    let word = word & (~start_stroke);
+                }
+                let screen[cur] = word;
+
+                let i = 0;
+                while (i < length) {
+                    let cur = cur + 1;
+                    let screen[cur] = cur_color;
+                    let i = i + 1;
+                }
+                let cur = cur + 1;
+                
+                let word = screen[cur];
+                if (cur_color) {
+                    let word = word | end_stroke;
+                }
+                else {
+                    let word = word & (~end_stroke);
+                }
+                let screen[cur] = word;
+            }   
+            return;
+        }
+
+        if (x1 > x2) {
+            let tmp = x1;
+            let x1 = x2;
+            let x2 = tmp;
+            let tmp = y1;
+            let y1 = y2;
+            let y2 = tmp;
+        }
+        // always right, or (up | down)
+        // dx > 0, a > 0
+        let dy_dir = 1;
+        let dx = x2 - x1;
+        let dy = y2 - y1;
+
+        if (dy < 0) {
+            let dy_dir = -1;
+            let dy = -dy;
+        }
+        
+        // b up
+        let diff = (a * dy) - (b * dx);
+        while ((~(a > dx)) & (~(b > dy))) {
+            do Screen.drawPixel(x1 + a, y1 + (dy_dir * b));
+            if (diff < 0) {
+                let a = a + 1;
+                let diff = diff + dy;
+            } else {
+                let b = b + 1;
+                let diff = diff - dx;
+            }
+        }
+        return;
     }
 
     /** Draws a filled rectangle whose top left corner is (x1, y1)
      * and bottom right corner is (x2,y2), using the current color. */
     function void drawRectangle(int x1, int y1, int x2, int y2) {
+        var int tmp;
+        // if (y1 > y2) {
+        //     let tmp = y1;
+        //     let y1 = y2;
+        //     let y2 = tmp;
+        //     let tmp = x1;
+        //     let x1 = x2;
+        //     let x2 = tmp;
+        // }
+        // while (~(y1 > y2)) {
+        //     do Screen.drawLine(x1, y1, x2, y1);
+        //     let y1 = y1 + 1;
+        // }
+        
+        // fast version for drawing rectangle
+        var int addr_start, addr_end, start_stroke, end_stroke, length, cur, i, word;
+        let length = (x2 / 16) - (x1 / 16) - 1;
+
+        let addr_start = (32 * y1) + (x1 / 16);
+        // let addr_end = (32 * y2) + (x2 / 16);
+
+        let start_stroke = maskL[Math.mod(x1, 16)];
+        let end_stroke = maskR[Math.mod(x2, 16)];
+
+        let cur = addr_start;
+
+        // within single memory unit
+        if (length < 0) {
+            let start_stroke = start_stroke & end_stroke;
+            while (~(y1 > y2)) {
+                let word = screen[cur];
+                if (cur_color) {
+                    let word = word | start_stroke;
+                }
+                else {
+                    let word = word & (~start_stroke);
+                }
+                let screen[cur] = word;
+                let cur = cur + 32;
+                let y1 = y1 + 1;
+            }
+        } else {
+            // y1 <= y2
+            while (~(y1 > y2)) {
+                let word = screen[cur];
+                if (cur_color) {
+                    let word = word | start_stroke;
+                }
+                else {
+                    let word = word & (~start_stroke);
+                }
+                let screen[cur] = word;
+            
+                // [s+1, e-1]
+                let i = 0;
+                while (i < length) {
+                    let cur = cur + 1;
+                    let screen[cur] = cur_color;
+                    let i = i + 1;
+                }
+                // e
+                let cur = cur + 1;
+                let word = screen[cur];
+                if (cur_color) {
+                    let word = word | end_stroke;
+                }
+                else {
+                    let word = word & (~end_stroke);
+                }
+                let screen[cur] = word;
+
+                let addr_start = addr_start + 32;
+                let cur = addr_start;
+                let y1 = y1 + 1;
+            }
+        }
+        return;
     }
 
     /** Draws a filled circle of radius r<=181 around (x,y), using the current color. */
     function void drawCircle(int x, int y, int r) {
+        var int dy, dy2, r2, l, lx, rx, ty, by;
+        let dy = 0;
+        let r2 = r * r;
+        let dy2 = dy * dy;
+        while (~(dy > r)) {
+            let l = Math.sqrt(r2 - dy2);
+            let lx = x - l;
+            let rx = x + l;
+            let ty = y - dy;
+            let by = y + dy;
+            do Screen.drawLine(lx, ty, rx, ty);
+            do Screen.drawLine(lx, by, rx, by);
+            let dy2 = dy2 + 1 + dy + dy;
+            let dy = dy + 1;
+        }
+        return;
     }
 }
