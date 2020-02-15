@@ -37,7 +37,7 @@ class Math {
         return x;
     }
 
-    // Returns true if the i-th bit of x is 1, false otherwise
+    //** Returns true if the i-th bit of x is 1, false otherwise
     function boolean bit(int x, int i) {
         if ((x & twoToThe[i]) = twoToThe[i]) {
             return true;
