@@ -71,7 +71,9 @@ class JackTokenizer(object):
         else:
             return False
         while self.cur_fp < self.lineCnt:
-            self.cur_line = self.lines[self.cur_fp].strip()
+            # remove // comment first
+            # to deal with //* case
+            self.cur_line = self.lines[self.cur_fp].split('//')[0].strip()
             # check block comment
             if self.in_comment:
                 # end block comment
@@ -223,7 +225,8 @@ class CompilationEngine():
         self.baseName = osp.splitext(osp.basename(input_file))[0]
         self.tgtName = input_file.replace('.jack', 'G+.xml')
         
-        self.out_f = open(self.tgtName, 'w')
+        # self.out_f = open(self.tgtName, 'w')
+        self.out_f = open(os.devnull, 'w')
         self.tokenizer.setFileName(self.srcName)
         self.vmwriter.setFileName(self.srcName)
         self.token_exhausted = False
@@ -1069,13 +1072,13 @@ def Main():
     
     for srcName in srcNames:
         print('=' * 50)
-        print('Parsing file {}...'.format(srcName))
+        print('Compiling file {}...'.format(srcName))
         cEngine.setFileName(srcName)
         cEngine.parse()
 
         tgtName = srcName.replace('.jack', 'G+.xml')
         # cmpName = srcName.replace('.jack', '.xml')
-        print('Save parsed file to {}.'.format(tgtName))
+        # print('Save parsed file to {}.'.format(tgtName))
         # print('Comparing {} to {} ... '.format(tgtName, cmpName))
         # os.system('TextComparer.sh {} {}'.format(tgtName, cmpName))
         # diffRet = os.system('diff --strip-trailing-cr {} {}'.format(tgtName, cmpName))
