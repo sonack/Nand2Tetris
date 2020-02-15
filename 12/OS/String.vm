@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function String.new 0
 push constant 3
 call Memory.alloc 1
@@ -5,13 +6,14 @@ pop pointer 0
 push argument 0
 push constant 0
 gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.new.IF_0.F_CASE
 push argument 0
 call Array.new 1
 pop this 2
-label IF_FALSE0
+goto String.new.IF_0.CONT
+label String.new.IF_0.F_CASE
+label String.new.IF_0.CONT
 push argument 0
 pop this 0
 push constant 0
@@ -25,13 +27,14 @@ push this 2
 push constant 0
 eq
 not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.dispose.IF_0.F_CASE
 push this 2
 call Array.dispose 1
 pop temp 0
-label IF_FALSE0
+goto String.dispose.IF_0.CONT
+label String.dispose.IF_0.F_CASE
+label String.dispose.IF_0.CONT
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
@@ -45,8 +48,8 @@ return
 function String.charAt 0
 push argument 0
 pop pointer 0
-push argument 1
 push this 2
+push argument 1
 add
 pop pointer 1
 push that 0
@@ -54,8 +57,8 @@ return
 function String.setCharAt 0
 push argument 0
 pop pointer 0
-push argument 1
 push this 2
+push argument 1
 add
 push argument 2
 pop temp 0
@@ -70,16 +73,15 @@ pop pointer 0
 push this 1
 push this 0
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.appendChar.IF_0.F_CASE
 push constant 1
 call Sys.error 1
 pop temp 0
-goto IF_END0
-label IF_FALSE0
-push this 1
+goto String.appendChar.IF_0.CONT
+label String.appendChar.IF_0.F_CASE
 push this 2
+push this 1
 add
 push argument 1
 pop temp 0
@@ -90,7 +92,7 @@ push this 1
 push constant 1
 add
 pop this 1
-label IF_END0
+label String.appendChar.IF_0.CONT
 push pointer 0
 return
 function String.eraseLastChar 0
@@ -99,13 +101,14 @@ pop pointer 0
 push this 1
 push constant 0
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.eraseLastChar.IF_0.F_CASE
 push constant 1
 call Sys.error 1
 pop temp 0
-label IF_FALSE0
+goto String.eraseLastChar.IF_0.CONT
+label String.eraseLastChar.IF_0.F_CASE
+label String.eraseLastChar.IF_0.CONT
 push this 1
 push constant 1
 sub
@@ -120,57 +123,59 @@ pop local 2
 push this 1
 push constant 0
 gt
-push constant 0
 push this 2
+push constant 0
 add
 pop pointer 1
 push that 0
 push constant 45
 eq
 and
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.intValue.IF_0.F_CASE
 push constant 1
 neg
 pop local 2
 push constant 1
 pop local 1
-label IF_FALSE0
-label WHILE_EXP0
+goto String.intValue.IF_0.CONT
+label String.intValue.IF_0.F_CASE
+label String.intValue.IF_0.CONT
+label String.intValue.WHILE_0.START
 push local 1
 push this 1
 lt
 not
-if-goto WHILE_END0
-push local 1
+if-goto String.intValue.WHILE_0.CONT
 push this 2
+push local 1
 add
 pop pointer 1
 push that 0
 push constant 48
 lt
-push local 1
 push this 2
+push local 1
 add
 pop pointer 1
 push that 0
 push constant 57
 gt
 or
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto String.intValue.IF_1.F_CASE
 push local 2
 push local 0
 call Math.multiply 2
 return
-label IF_FALSE1
+goto String.intValue.IF_1.CONT
+label String.intValue.IF_1.F_CASE
+label String.intValue.IF_1.CONT
 push constant 10
 push local 0
 call Math.multiply 2
-push local 1
 push this 2
+push local 1
 add
 pop pointer 1
 push that 0
@@ -182,8 +187,8 @@ push local 1
 push constant 1
 add
 pop local 1
-goto WHILE_EXP0
-label WHILE_END0
+goto String.intValue.WHILE_0.START
+label String.intValue.WHILE_0.CONT
 push local 2
 push local 0
 call Math.multiply 2
@@ -196,14 +201,13 @@ pop this 1
 push argument 1
 push constant 0
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto String.setInt.IF_0.F_CASE
 push argument 1
 neg
 pop argument 1
-push constant 0
 push this 2
+push constant 0
 add
 push constant 45
 pop temp 0
@@ -212,7 +216,9 @@ push temp 0
 pop that 0
 push constant 1
 pop this 1
-label IF_FALSE0
+goto String.setInt.IF_0.CONT
+label String.setInt.IF_0.F_CASE
+label String.setInt.IF_0.CONT
 push pointer 0
 push argument 1
 call String.int2String 2
@@ -237,11 +243,10 @@ pop local 1
 push argument 1
 push constant 10
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push this 1
+not
+if-goto String.int2String.IF_0.F_CASE
 push this 2
+push this 1
 add
 push local 1
 pop temp 0
@@ -252,14 +257,14 @@ push this 1
 push constant 1
 add
 pop this 1
-goto IF_END0
-label IF_FALSE0
+goto String.int2String.IF_0.CONT
+label String.int2String.IF_0.F_CASE
 push pointer 0
 push local 0
 call String.int2String 2
 pop temp 0
-push this 1
 push this 2
+push this 1
 add
 push local 1
 pop temp 0
@@ -270,7 +275,7 @@ push this 1
 push constant 1
 add
 pop this 1
-label IF_END0
+label String.int2String.IF_0.CONT
 push constant 0
 return
 function String.newLine 0

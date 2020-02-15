@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Sys.init 0
 call Memory.init 0
 pop temp 0
@@ -16,52 +17,53 @@ pop temp 0
 push constant 0
 return
 function Sys.halt 0
-label WHILE_EXP0
-push constant 0
+label Sys.halt.WHILE_0.START
+push constant 1
+neg
 not
-not
-if-goto WHILE_END0
-goto WHILE_EXP0
-label WHILE_END0
+if-goto Sys.halt.WHILE_0.CONT
+goto Sys.halt.WHILE_0.START
+label Sys.halt.WHILE_0.CONT
 push constant 0
 return
 function Sys.wait 1
 push argument 0
 push constant 0
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Sys.wait.IF_0.F_CASE
 push constant 1
 call Sys.error 1
 pop temp 0
-label IF_FALSE0
-label WHILE_EXP0
+goto Sys.wait.IF_0.CONT
+label Sys.wait.IF_0.F_CASE
+label Sys.wait.IF_0.CONT
+label Sys.wait.WHILE_0.START
 push argument 0
 push constant 0
 gt
 not
-if-goto WHILE_END0
+if-goto Sys.wait.WHILE_0.CONT
 push constant 100
 pop local 0
-label WHILE_EXP1
+label Sys.wait.WHILE_1.START
 push local 0
 push constant 0
 gt
 not
-if-goto WHILE_END1
+if-goto Sys.wait.WHILE_1.CONT
 push local 0
 push constant 1
 sub
 pop local 0
-goto WHILE_EXP1
-label WHILE_END1
+goto Sys.wait.WHILE_1.START
+label Sys.wait.WHILE_1.CONT
 push argument 0
 push constant 1
 sub
 pop argument 0
-goto WHILE_EXP0
-label WHILE_END0
+goto Sys.wait.WHILE_0.START
+label Sys.wait.WHILE_0.CONT
 push constant 0
 return
 function Sys.error 0

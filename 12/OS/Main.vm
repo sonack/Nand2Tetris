@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Main.main 1
 call PongGame.newInstance 0
 pop temp 0

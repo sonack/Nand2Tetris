@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Ball.new 0
 push constant 15
 call Memory.alloc 1
@@ -36,8 +37,8 @@ return
 function Ball.show 0
 push argument 0
 pop pointer 0
-push constant 0
-not
+push constant 1
+neg
 call Screen.setColor 1
 pop temp 0
 push pointer 0
@@ -105,9 +106,8 @@ push local 1
 lt
 pop this 7
 push this 7
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Ball.setDestination.IF_0.F_CASE
 push local 0
 pop local 2
 push local 1
@@ -122,8 +122,8 @@ push this 0
 push argument 1
 lt
 pop this 9
-goto IF_END0
-label IF_FALSE0
+goto Ball.setDestination.IF_0.CONT
+label Ball.setDestination.IF_0.F_CASE
 push this 0
 push argument 1
 lt
@@ -132,7 +132,7 @@ push this 1
 push argument 2
 lt
 pop this 9
-label IF_END0
+label Ball.setDestination.IF_0.CONT
 push constant 2
 push local 1
 call Math.multiply 2
@@ -160,142 +160,139 @@ pop temp 0
 push this 4
 push constant 0
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Ball.move.IF_0.F_CASE
 push this 4
 push this 5
 add
 pop this 4
-goto IF_END0
-label IF_FALSE0
+goto Ball.move.IF_0.CONT
+label Ball.move.IF_0.F_CASE
 push this 4
 push this 6
 add
 pop this 4
 push this 9
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Ball.move.IF_1.F_CASE
 push this 7
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+not
+if-goto Ball.move.IF_2.F_CASE
 push this 0
 push constant 4
 add
 pop this 0
-goto IF_END2
-label IF_FALSE2
+goto Ball.move.IF_2.CONT
+label Ball.move.IF_2.F_CASE
 push this 1
 push constant 4
 add
 pop this 1
-label IF_END2
-goto IF_END1
-label IF_FALSE1
+label Ball.move.IF_2.CONT
+goto Ball.move.IF_1.CONT
+label Ball.move.IF_1.F_CASE
 push this 7
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+not
+if-goto Ball.move.IF_3.F_CASE
 push this 0
 push constant 4
 sub
 pop this 0
-goto IF_END3
-label IF_FALSE3
+goto Ball.move.IF_3.CONT
+label Ball.move.IF_3.F_CASE
 push this 1
 push constant 4
 sub
 pop this 1
-label IF_END3
-label IF_END1
-label IF_END0
+label Ball.move.IF_3.CONT
+label Ball.move.IF_1.CONT
+label Ball.move.IF_0.CONT
 push this 8
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+not
+if-goto Ball.move.IF_4.F_CASE
 push this 7
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
+not
+if-goto Ball.move.IF_5.F_CASE
 push this 1
 push constant 4
 add
 pop this 1
-goto IF_END5
-label IF_FALSE5
+goto Ball.move.IF_5.CONT
+label Ball.move.IF_5.F_CASE
 push this 0
 push constant 4
 add
 pop this 0
-label IF_END5
-goto IF_END4
-label IF_FALSE4
+label Ball.move.IF_5.CONT
+goto Ball.move.IF_4.CONT
+label Ball.move.IF_4.F_CASE
 push this 7
-if-goto IF_TRUE6
-goto IF_FALSE6
-label IF_TRUE6
+not
+if-goto Ball.move.IF_6.F_CASE
 push this 1
 push constant 4
 sub
 pop this 1
-goto IF_END6
-label IF_FALSE6
+goto Ball.move.IF_6.CONT
+label Ball.move.IF_6.F_CASE
 push this 0
 push constant 4
 sub
 pop this 0
-label IF_END6
-label IF_END4
+label Ball.move.IF_6.CONT
+label Ball.move.IF_4.CONT
 push this 0
 push this 10
 gt
 not
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
+not
+if-goto Ball.move.IF_7.F_CASE
 push constant 1
 pop this 14
 push this 10
 pop this 0
-label IF_FALSE7
+goto Ball.move.IF_7.CONT
+label Ball.move.IF_7.F_CASE
+label Ball.move.IF_7.CONT
 push this 0
 push this 11
 lt
 not
-if-goto IF_TRUE8
-goto IF_FALSE8
-label IF_TRUE8
+not
+if-goto Ball.move.IF_8.F_CASE
 push constant 2
 pop this 14
 push this 11
 pop this 0
-label IF_FALSE8
+goto Ball.move.IF_8.CONT
+label Ball.move.IF_8.F_CASE
+label Ball.move.IF_8.CONT
 push this 1
 push this 12
 gt
 not
-if-goto IF_TRUE9
-goto IF_FALSE9
-label IF_TRUE9
+not
+if-goto Ball.move.IF_9.F_CASE
 push constant 3
 pop this 14
 push this 12
 pop this 1
-label IF_FALSE9
+goto Ball.move.IF_9.CONT
+label Ball.move.IF_9.F_CASE
+label Ball.move.IF_9.CONT
 push this 1
 push this 13
 lt
 not
-if-goto IF_TRUE10
-goto IF_FALSE10
-label IF_TRUE10
+not
+if-goto Ball.move.IF_10.F_CASE
 push constant 4
 pop this 14
 push this 13
 pop this 1
-label IF_FALSE10
+goto Ball.move.IF_10.CONT
+label Ball.move.IF_10.F_CASE
+label Ball.move.IF_10.CONT
 push pointer 0
 call Ball.show 1
 pop temp 0
@@ -315,13 +312,12 @@ pop local 3
 push argument 1
 push constant 0
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Ball.bounce.IF_0.F_CASE
 push constant 10
 pop local 4
-goto IF_END0
-label IF_FALSE0
+goto Ball.bounce.IF_0.CONT
+label Ball.bounce.IF_0.F_CASE
 push this 2
 push constant 0
 lt
@@ -339,23 +335,21 @@ neg
 eq
 and
 or
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Ball.bounce.IF_1.F_CASE
 push constant 20
 pop local 4
-goto IF_END1
-label IF_FALSE1
+goto Ball.bounce.IF_1.CONT
+label Ball.bounce.IF_1.F_CASE
 push constant 5
 pop local 4
-label IF_END1
-label IF_END0
+label Ball.bounce.IF_1.CONT
+label Ball.bounce.IF_0.CONT
 push this 14
 push constant 1
 eq
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+not
+if-goto Ball.bounce.IF_2.F_CASE
 push constant 506
 pop local 0
 push local 3
@@ -371,14 +365,13 @@ push local 4
 call Math.multiply 2
 add
 pop local 1
-goto IF_END2
-label IF_FALSE2
+goto Ball.bounce.IF_2.CONT
+label Ball.bounce.IF_2.F_CASE
 push this 14
 push constant 2
 eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+not
+if-goto Ball.bounce.IF_3.F_CASE
 push constant 0
 pop local 0
 push local 3
@@ -393,14 +386,13 @@ push local 4
 call Math.multiply 2
 add
 pop local 1
-goto IF_END3
-label IF_FALSE3
+goto Ball.bounce.IF_3.CONT
+label Ball.bounce.IF_3.F_CASE
 push this 14
 push constant 3
 eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+not
+if-goto Ball.bounce.IF_4.F_CASE
 push constant 250
 pop local 1
 push local 2
@@ -416,8 +408,8 @@ push local 4
 call Math.multiply 2
 add
 pop local 0
-goto IF_END4
-label IF_FALSE4
+goto Ball.bounce.IF_4.CONT
+label Ball.bounce.IF_4.F_CASE
 push constant 0
 pop local 1
 push local 2
@@ -432,9 +424,9 @@ push local 4
 call Math.multiply 2
 add
 pop local 0
-label IF_END4
-label IF_END3
-label IF_END2
+label Ball.bounce.IF_4.CONT
+label Ball.bounce.IF_3.CONT
+label Ball.bounce.IF_2.CONT
 push pointer 0
 push local 0
 push local 1

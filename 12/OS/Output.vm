@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Output.init 0
 call Output.initMap 0
 pop temp 0
@@ -10,8 +11,8 @@ pop static 3
 push constant 2
 call Array.new 1
 pop static 4
-push constant 0
 push static 4
+push constant 0
 add
 push constant 256
 neg
@@ -19,8 +20,8 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 1
 push static 4
+push constant 1
 add
 push constant 255
 pop temp 0
@@ -30,16 +31,16 @@ pop that 0
 push constant 2
 call Array.new 1
 pop static 5
-push constant 0
 push static 5
+push constant 0
 add
 push constant 1
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 1
 push static 5
+push constant 1
 add
 push constant 256
 pop temp 0
@@ -1402,96 +1403,96 @@ function Output.create 1
 push constant 11
 call Array.new 1
 pop local 0
-push argument 0
 push static 0
+push argument 0
 add
 push local 0
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 0
 push local 0
+push constant 0
 add
 push argument 1
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 1
 push local 0
+push constant 1
 add
 push argument 2
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 2
 push local 0
+push constant 2
 add
 push argument 3
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 3
 push local 0
+push constant 3
 add
 push argument 4
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 4
 push local 0
+push constant 4
 add
 push argument 5
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 5
 push local 0
+push constant 5
 add
 push argument 6
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 6
 push local 0
+push constant 6
 add
 push argument 7
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 7
 push local 0
+push constant 7
 add
 push argument 8
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 8
 push local 0
+push constant 8
 add
 push argument 9
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 9
 push local 0
+push constant 9
 add
 push argument 10
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 10
 push local 0
+push constant 10
 add
 push argument 11
 pop temp 0
@@ -1508,14 +1509,15 @@ push argument 0
 push constant 126
 gt
 or
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.getMap.IF_0.F_CASE
 push constant 0
 pop argument 0
-label IF_FALSE0
-push argument 0
+goto Output.getMap.IF_0.CONT
+label Output.getMap.IF_0.F_CASE
+label Output.getMap.IF_0.CONT
 push static 0
+push argument 0
 add
 pop pointer 1
 push that 0
@@ -1538,9 +1540,8 @@ pop static 2
 push static 2
 push constant 64
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.moveCursorForward.IF_0.F_CASE
 push constant 0
 pop static 2
 push static 3
@@ -1550,13 +1551,16 @@ pop static 3
 push static 3
 push constant 23
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Output.moveCursorForward.IF_1.F_CASE
 push constant 0
 pop static 3
-label IF_FALSE1
-label IF_FALSE0
+goto Output.moveCursorForward.IF_1.CONT
+label Output.moveCursorForward.IF_1.F_CASE
+label Output.moveCursorForward.IF_1.CONT
+goto Output.moveCursorForward.IF_0.CONT
+label Output.moveCursorForward.IF_0.F_CASE
+label Output.moveCursorForward.IF_0.CONT
 push constant 0
 return
 function Output.moveCursorBackward 0
@@ -1567,9 +1571,8 @@ pop static 2
 push static 2
 push constant 0
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.moveCursorBackward.IF_0.F_CASE
 push constant 63
 pop static 2
 push static 3
@@ -1579,13 +1582,16 @@ pop static 3
 push static 3
 push constant 0
 lt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Output.moveCursorBackward.IF_1.F_CASE
 push constant 22
 pop static 3
-label IF_FALSE1
-label IF_FALSE0
+goto Output.moveCursorBackward.IF_1.CONT
+label Output.moveCursorBackward.IF_1.F_CASE
+label Output.moveCursorBackward.IF_1.CONT
+goto Output.moveCursorBackward.IF_0.CONT
+label Output.moveCursorBackward.IF_0.F_CASE
+label Output.moveCursorBackward.IF_0.CONT
 push constant 0
 return
 function Output.renderChar 5
@@ -1606,33 +1612,33 @@ push static 2
 push constant 1
 and
 pop local 3
-label WHILE_EXP0
+label Output.renderChar.WHILE_0.START
 push local 1
 push constant 11
 lt
 not
-if-goto WHILE_END0
-push local 2
+if-goto Output.renderChar.WHILE_0.CONT
 push static 1
+push local 2
 add
-push local 2
 push static 1
+push local 2
 add
 pop pointer 1
 push that 0
-push local 3
 push static 4
+push local 3
 add
 pop pointer 1
 push that 0
 and
-push local 1
 push local 0
+push local 1
 add
 pop pointer 1
 push that 0
-push local 3
 push static 5
+push local 3
 add
 pop pointer 1
 push that 0
@@ -1650,50 +1656,48 @@ push local 1
 push constant 1
 add
 pop local 1
-goto WHILE_EXP0
-label WHILE_END0
+goto Output.renderChar.WHILE_0.START
+label Output.renderChar.WHILE_0.CONT
 push constant 0
 return
 function Output.printChar 0
 push argument 0
 call String.backSpace 0
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.printChar.IF_0.F_CASE
 call Output.backSpace 0
 pop temp 0
-goto IF_END0
-label IF_FALSE0
+goto Output.printChar.IF_0.CONT
+label Output.printChar.IF_0.F_CASE
 push argument 0
 call String.newLine 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Output.printChar.IF_1.F_CASE
 call Output.println 0
 pop temp 0
-goto IF_END1
-label IF_FALSE1
+goto Output.printChar.IF_1.CONT
+label Output.printChar.IF_1.F_CASE
 push argument 0
 call Output.renderChar 1
 pop temp 0
 call Output.moveCursorForward 0
 pop temp 0
-label IF_END1
-label IF_END0
+label Output.printChar.IF_1.CONT
+label Output.printChar.IF_0.CONT
 push constant 0
 return
 function Output.printString 2
 push argument 0
 call String.length 1
 pop local 0
-label WHILE_EXP0
+label Output.printString.WHILE_0.START
 push local 1
 push local 0
 lt
 not
-if-goto WHILE_END0
+if-goto Output.printString.WHILE_0.CONT
 push argument 0
 push local 1
 call String.charAt 2
@@ -1703,8 +1707,8 @@ push local 1
 push constant 1
 add
 pop local 1
-goto WHILE_EXP0
-label WHILE_END0
+goto Output.printString.WHILE_0.START
+label Output.printString.WHILE_0.CONT
 call Output.println 0
 pop temp 0
 push argument 0
@@ -1716,16 +1720,17 @@ function Output.printInt 0
 push argument 0
 push constant 0
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.printInt.IF_0.F_CASE
 push constant 45
 call Output.printChar 1
 pop temp 0
 push argument 0
 neg
 pop argument 0
-label IF_FALSE0
+goto Output.printInt.IF_0.CONT
+label Output.printInt.IF_0.F_CASE
+label Output.printInt.IF_0.CONT
 push argument 0
 call Output.printIntAbs 1
 pop temp 0
@@ -1745,13 +1750,14 @@ pop local 1
 push local 0
 push constant 0
 gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.printIntAbs.IF_0.F_CASE
 push local 0
 call Output.printIntAbs 1
 pop temp 0
-label IF_FALSE0
+goto Output.printIntAbs.IF_0.CONT
+label Output.printIntAbs.IF_0.F_CASE
+label Output.printIntAbs.IF_0.CONT
 push local 1
 push constant 48
 add
@@ -1769,12 +1775,13 @@ pop static 3
 push static 3
 push constant 23
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Output.println.IF_0.F_CASE
 push constant 0
 pop static 3
-label IF_FALSE0
+goto Output.println.IF_0.CONT
+label Output.println.IF_0.F_CASE
+label Output.println.IF_0.CONT
 push constant 0
 return
 function Output.backSpace 0

@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Keyboard.init 0
 push constant 24576
 pop static 0
@@ -16,25 +17,25 @@ return
 function Keyboard.readChar 1
 call Keyboard.displayCursor 0
 pop temp 0
-label WHILE_EXP0
+label Keyboard.readChar.WHILE_0.START
 call Keyboard.keyPressed 0
 push constant 0
 eq
 not
-if-goto WHILE_END0
-goto WHILE_EXP0
-label WHILE_END0
+if-goto Keyboard.readChar.WHILE_0.CONT
+goto Keyboard.readChar.WHILE_0.START
+label Keyboard.readChar.WHILE_0.CONT
 call Keyboard.keyPressed 0
 pop local 0
-label WHILE_EXP1
+label Keyboard.readChar.WHILE_1.START
 call Keyboard.keyPressed 0
 push constant 0
 eq
 not
 not
-if-goto WHILE_END1
-goto WHILE_EXP1
-label WHILE_END1
+if-goto Keyboard.readChar.WHILE_1.CONT
+goto Keyboard.readChar.WHILE_1.START
+label Keyboard.readChar.WHILE_1.CONT
 call Output.backSpace 0
 pop temp 0
 push local 0
@@ -45,13 +46,14 @@ push constant 128
 gt
 or
 not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Keyboard.readChar.IF_0.F_CASE
 push local 0
 call Output.printChar 1
 pop temp 0
-label IF_FALSE0
+goto Keyboard.readChar.IF_0.CONT
+label Keyboard.readChar.IF_0.F_CASE
+label Keyboard.readChar.IF_0.CONT
 push local 0
 return
 function Keyboard.readLine 2
@@ -61,13 +63,13 @@ pop local 0
 push argument 0
 call Output.printString 1
 pop temp 0
-label WHILE_EXP0
+label Keyboard.readLine.WHILE_0.START
 push local 1
 call String.newLine 0
 eq
 not
 not
-if-goto WHILE_END0
+if-goto Keyboard.readLine.WHILE_0.CONT
 call Keyboard.readChar 0
 pop local 1
 push local 1
@@ -78,38 +80,39 @@ push constant 126
 gt
 or
 not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Keyboard.readLine.IF_0.F_CASE
 push local 0
 push local 1
 call String.appendChar 2
 pop local 0
-goto IF_END0
-label IF_FALSE0
+goto Keyboard.readLine.IF_0.CONT
+label Keyboard.readLine.IF_0.F_CASE
 push local 1
 call String.backSpace 0
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+not
+if-goto Keyboard.readLine.IF_1.F_CASE
 push local 0
 call String.length 1
 push constant 0
 gt
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+not
+if-goto Keyboard.readLine.IF_2.F_CASE
 push local 0
 call String.eraseLastChar 1
 pop temp 0
 call Output.backSpace 0
 pop temp 0
-label IF_FALSE2
-label IF_FALSE1
-label IF_END0
-goto WHILE_EXP0
-label WHILE_END0
+goto Keyboard.readLine.IF_2.CONT
+label Keyboard.readLine.IF_2.F_CASE
+label Keyboard.readLine.IF_2.CONT
+goto Keyboard.readLine.IF_1.CONT
+label Keyboard.readLine.IF_1.F_CASE
+label Keyboard.readLine.IF_1.CONT
+label Keyboard.readLine.IF_0.CONT
+goto Keyboard.readLine.WHILE_0.START
+label Keyboard.readLine.WHILE_0.CONT
 push local 0
 return
 function Keyboard.readInt 1

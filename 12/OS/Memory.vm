@@ -1,3 +1,4 @@
+// Created on 2020-02-16 00:32:47 by sonack compiler.
 function Memory.init 0
 push constant 0
 pop static 0
@@ -11,19 +12,19 @@ push constant 0
 pop static 5
 push constant 1
 pop static 4
-push constant 0
-not
+push constant 1
+neg
 pop static 6
-push static 4
 push static 2
+push static 4
 add
 push static 3
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 5
 push static 2
+push static 5
 add
 push static 3
 push static 2
@@ -37,15 +38,15 @@ pop that 0
 push constant 0
 return
 function Memory.peek 0
-push argument 0
 push static 0
+push argument 0
 add
 pop pointer 1
 push that 0
 return
 function Memory.poke 0
-push argument 0
 push static 0
+push argument 0
 add
 push argument 1
 pop temp 0
@@ -59,7 +60,7 @@ push static 1
 pop local 0
 push constant 0
 pop local 3
-label WHILE_EXP0
+label Memory.alloc.WHILE_0.START
 push local 0
 push static 3
 eq
@@ -68,9 +69,9 @@ push local 3
 not
 and
 not
-if-goto WHILE_END0
-push static 5
+if-goto Memory.alloc.WHILE_0.CONT
 push local 0
+push static 5
 add
 pop pointer 1
 push that 0
@@ -83,15 +84,14 @@ push local 4
 push local 5
 lt
 not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Memory.alloc.IF_0.F_CASE
 push local 0
 push local 5
 add
 pop local 2
-push static 5
 push local 2
+push static 5
 add
 push local 4
 push local 5
@@ -100,11 +100,11 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 4
 push local 2
-add
 push static 4
+add
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
@@ -112,16 +112,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 4
 push local 0
+push static 4
 add
 push local 2
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 5
 push local 0
+push static 5
 add
 push constant 0
 pop temp 0
@@ -132,53 +132,56 @@ push local 0
 push constant 2
 add
 pop local 1
-push constant 0
-not
+push constant 1
+neg
 pop local 3
 push local 0
 push static 1
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push static 4
+not
+if-goto Memory.alloc.IF_1.F_CASE
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
 pop static 1
-label IF_FALSE1
-label IF_FALSE0
-push static 4
+goto Memory.alloc.IF_1.CONT
+label Memory.alloc.IF_1.F_CASE
+label Memory.alloc.IF_1.CONT
+goto Memory.alloc.IF_0.CONT
+label Memory.alloc.IF_0.F_CASE
+label Memory.alloc.IF_0.CONT
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_EXP0
-label WHILE_END0
+goto Memory.alloc.WHILE_0.START
+label Memory.alloc.WHILE_0.CONT
 push local 3
 not
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+not
+if-goto Memory.alloc.IF_2.F_CASE
 push static 6
 not
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
+not
+if-goto Memory.alloc.IF_3.F_CASE
 call Memory.deFrag 0
 pop temp 0
 push argument 0
 call Memory.alloc 1
 return
-goto IF_END3
-label IF_FALSE3
+goto Memory.alloc.IF_3.CONT
+label Memory.alloc.IF_3.F_CASE
 push local 3
 call Output.printInt 1
 pop temp 0
-label IF_END3
-label IF_FALSE2
+label Memory.alloc.IF_3.CONT
+goto Memory.alloc.IF_2.CONT
+label Memory.alloc.IF_2.F_CASE
+label Memory.alloc.IF_2.CONT
 push local 1
 return
 function Memory.deAlloc 2
@@ -188,11 +191,11 @@ push argument 0
 push constant 2
 sub
 pop local 0
+push local 0
 push static 5
-push local 0
 add
-push static 4
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
@@ -205,38 +208,39 @@ pop that 0
 push local 0
 push static 1
 lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+not
+if-goto Memory.deAlloc.IF_0.F_CASE
 push local 0
 pop static 1
-label IF_FALSE0
+goto Memory.deAlloc.IF_0.CONT
+label Memory.deAlloc.IF_0.F_CASE
+label Memory.deAlloc.IF_0.CONT
 call Memory.deFrag 0
 pop temp 0
 push constant 0
 return
 function Memory.deFrag 3
-push constant 0
-not
+push constant 1
+neg
 pop static 6
 push static 1
 pop local 0
 push static 1
 pop local 1
-label WHILE_EXP0
+label Memory.deFrag.WHILE_0.START
 push local 0
 push static 3
 eq
 not
 not
-if-goto WHILE_END0
-label WHILE_EXP1
+if-goto Memory.deFrag.WHILE_0.CONT
+label Memory.deFrag.WHILE_1.START
 push local 0
 push static 3
 eq
 not
+push local 0
 push static 4
-push local 0
 add
 pop pointer 1
 push that 0
@@ -244,8 +248,8 @@ push local 0
 eq
 push constant 2
 add
-push static 5
 push local 0
+push static 5
 add
 pop pointer 1
 push that 0
@@ -254,37 +258,36 @@ gt
 or
 and
 not
-if-goto WHILE_END1
-push static 4
+if-goto Memory.deFrag.WHILE_1.CONT
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_EXP1
-label WHILE_END1
+goto Memory.deFrag.WHILE_1.START
+label Memory.deFrag.WHILE_1.CONT
 push local 0
 pop local 2
 push local 2
-push static 4
 push local 1
+push static 4
 add
 pop pointer 1
 push that 0
 gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push static 4
+not
+if-goto Memory.deFrag.IF_0.F_CASE
 push local 1
+push static 4
 add
 push local 2
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 5
 push local 1
+push static 5
 add
 push local 2
 push local 1
@@ -295,14 +298,16 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-label IF_FALSE0
-label WHILE_EXP2
+goto Memory.deFrag.IF_0.CONT
+label Memory.deFrag.IF_0.F_CASE
+label Memory.deFrag.IF_0.CONT
+label Memory.deFrag.WHILE_2.START
 push local 0
 push static 3
 eq
 not
-push static 4
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
@@ -310,8 +315,8 @@ push local 0
 push constant 2
 add
 gt
-push static 5
 push local 0
+push static 5
 add
 pop pointer 1
 push that 0
@@ -320,19 +325,19 @@ eq
 and
 and
 not
-if-goto WHILE_END2
-push static 4
+if-goto Memory.deFrag.WHILE_2.CONT
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_EXP2
-label WHILE_END2
+goto Memory.deFrag.WHILE_2.START
+label Memory.deFrag.WHILE_2.CONT
 push local 0
 pop local 1
-goto WHILE_EXP0
-label WHILE_END0
+goto Memory.deFrag.WHILE_0.START
+label Memory.deFrag.WHILE_0.CONT
 push constant 0
 return
 function Memory.inspect 1
@@ -360,21 +365,21 @@ push constant 61
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-label WHILE_EXP0
+label Memory.inspect.WHILE_0.START
 push local 0
 push static 3
 eq
 not
 not
-if-goto WHILE_END0
+if-goto Memory.inspect.WHILE_0.CONT
 push local 0
 call Output.printInt 1
 pop temp 0
 push constant 32
 call Output.printChar 1
 pop temp 0
-push static 5
 push local 0
+push static 5
 add
 pop pointer 1
 push that 0
@@ -383,8 +388,8 @@ pop temp 0
 push constant 32
 call Output.printChar 1
 pop temp 0
-push static 4
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
@@ -392,14 +397,14 @@ call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
-push static 4
 push local 0
+push static 4
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_EXP0
-label WHILE_END0
+goto Memory.inspect.WHILE_0.START
+label Memory.inspect.WHILE_0.CONT
 push constant 9
 call String.new 1
 push constant 61
