@@ -1,295 +1,358 @@
+// [0]
+// goto START
+@BAREBONE$START
+0;JMP
+(VM_SUBROUTINE_EQ)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_EQ
+D;JNE
+@SP
+A=M-1
+M=-1
+(END_EQ)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_GT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_GT
+D;JLE
+@SP
+A=M-1
+M=-1
+(END_GT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_LT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_LT
+D;JGE
+@SP
+A=M-1
+M=-1
+(END_LT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_RETURN)
+@5
+D=A
+@LCL
+A=M-D
+D=M
+@R13
+M=D
+@SP
+AM=M-1
+D=M
+@ARG
+A=M
+M=D
+D=A
+@SP
+M=D+1
+@LCL
+D=M
+@R14
+AM=D-1
+D=M
+@THAT
+M=D
+@R14
+AM=M-1
+D=M
+@THIS
+M=D
+@R14
+AM=M-1
+D=M
+@ARG
+M=D
+@R14
+AM=M-1
+D=M
+@LCL
+M=D
+@R13
+A=M
+0;JMP
+(VM_SUBROUTINE_CALL)
+@SP
+A=M
+M=D
+@LCL
+D=M
+@SP
+AM=M+1
+M=D
+@ARG
+D=M
+@SP
+AM=M+1
+M=D
+@THIS
+D=M
+@SP
+AM=M+1
+M=D
+@THAT
+D=M
+@SP
+AM=M+1
+M=D
+@4
+D=A
+@R13
+D=D+M
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+MD=M+1
+@LCL
+M=D
+@R14
+A=M
+0;JMP
+// [129]
+// label START
+(BAREBONE$START)
+// [129]
 // push constant 10
 @10
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [135]
 // pop local 0
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@0
-D=A
 @LCL
-D=D+M
-@addr
-M=D
-@tmp
-D=M
-@addr
 A=M
 M=D
+// [141]
 // push constant 21
 @21
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [147]
 // push constant 22
 @22
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [153]
 // pop argument 2
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@2
-D=A
 @ARG
-D=D+M
-@addr
+A=M+1
+A=A+1
 M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [160]
 // pop argument 1
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@1
-D=A
 @ARG
-D=D+M
-@addr
+A=M+1
 M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [166]
 // push constant 36
 @36
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [172]
 // pop this 6
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@6
-D=A
 @THIS
-D=D+M
-@addr
+A=M+1
+A=A+1
+A=A+1
+A=A+1
+A=A+1
+A=A+1
 M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [183]
 // push constant 42
 @42
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [189]
 // push constant 45
 @45
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [195]
 // pop that 5
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@5
-D=A
 @THAT
-D=D+M
-@addr
+A=M+1
+A=A+1
+A=A+1
+A=A+1
+A=A+1
 M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [205]
 // pop that 2
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
-M=D
-@2
-D=A
 @THAT
-D=D+M
-@addr
+A=M+1
+A=A+1
 M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [212]
 // push constant 510
 @510
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [218]
+// pop temp R11
 @SP
-M=M+1
-// pop temp 6
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@tmp
+@R11
 M=D
-@6
-D=A
-@5
-D=D+A
-@addr
-M=D
-@tmp
-D=M
-@addr
-A=M
-M=D
+// [223]
 // push local 0
-@0
-D=A
 @LCL
-A=D+M
+A=M
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [230]
 // push that 5
-@5
-D=A
 @THAT
-A=D+M
 D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// add
-@SP
-M=M-1
-@SP
-A=M
-D=M
-A=A-1
-M=D+M
-// push argument 1
-@1
-D=A
-@ARG
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// sub
-@SP
-M=M-1
-@SP
-A=M
-D=M
-A=A-1
-M=M-D
-// push this 6
-@6
-D=A
-@THIS
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// push this 6
-@6
-D=A
-@THIS
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// add
-@SP
-M=M-1
-@SP
-A=M
-D=M
-A=A-1
-M=D+M
-// sub
-@SP
-M=M-1
-@SP
-A=M
-D=M
-A=A-1
-M=M-D
-// push temp 6
-@6
-D=A
 @5
 A=D+A
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [239]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [244]
+// push argument 1
+@ARG
+A=M+1
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [251]
+// sub
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M-D
+// [256]
+// push this 6
+@THIS
+D=M
+@6
+A=D+A
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [265]
+// push this 6
+@THIS
+D=M
+@6
+A=D+A
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [274]
+// add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+// [279]
+// sub
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M-D
+// [284]
+// push temp R11
+@R11
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [290]
+// add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D

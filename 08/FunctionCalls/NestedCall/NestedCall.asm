@@ -1,644 +1,489 @@
-// *******************************************
-// **** Compile Time: 2020-02-06 16:59:46 ****
-// *******************************************
-// ***********************************************
-// **** File: FunctionCalls/NestedCall/Sys.vm ****
-// ***********************************************
-// function Sys.init 0
-(Sys.init)
+// [0]
+// bootstrap
+// sp = 256
+@256
+D=A
+@SP
+M=D
+// [4]
+// call Sys.init
+// [4]
+// call Sys.init 0
 @0
 D=A
-(Sys.init$$INIT_LCL_VARS)
-@Sys.init$$INIT_LCL_VARS_OVER
-D;JEQ
+@R13
+M=D
+@Sys.init
+D=A
+@R14
+M=D
+@RET_ADDRESS_CALL0
+D=A
+@VM_SUBROUTINE_CALL
+0;JMP
+(RET_ADDRESS_CALL0)
+(VM_SUBROUTINE_EQ)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_EQ
+D;JNE
+@SP
+A=M-1
+M=-1
+(END_EQ)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_GT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_GT
+D;JLE
+@SP
+A=M-1
+M=-1
+(END_GT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_LT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_LT
+D;JGE
+@SP
+A=M-1
+M=-1
+(END_LT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_RETURN)
+@5
+D=A
+@LCL
+A=M-D
+D=M
+@R13
+M=D
+@SP
+AM=M-1
+D=M
+@ARG
+A=M
+M=D
+D=A
+@SP
+M=D+1
+@LCL
+D=M
+@R14
+AM=D-1
+D=M
+@THAT
+M=D
+@R14
+AM=M-1
+D=M
+@THIS
+M=D
+@R14
+AM=M-1
+D=M
+@ARG
+M=D
+@R14
+AM=M-1
+D=M
+@LCL
+M=D
+@R13
+A=M
+0;JMP
+(VM_SUBROUTINE_CALL)
 @SP
 A=M
-M=0
+M=D
+@LCL
+D=M
 @SP
-M=M+1
-D=D-1
-@Sys.init$$INIT_LCL_VARS
+AM=M+1
+M=D
+@ARG
+D=M
+@SP
+AM=M+1
+M=D
+@THIS
+D=M
+@SP
+AM=M+1
+M=D
+@THAT
+D=M
+@SP
+AM=M+1
+M=D
+@4
+D=A
+@R13
+D=D+M
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+MD=M+1
+@LCL
+M=D
+@R14
+A=M
 0;JMP
-(Sys.init$$INIT_LCL_VARS_OVER)
+// [143]
+// function Sys.init 0
+(Sys.init)
+// [143]
 // push constant 4000
 @4000
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [149]
+// pop pointer THIS
 @SP
-M=M+1
-// pop pointer 0
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THIS
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [154]
 // push constant 5000
 @5000
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [160]
+// pop pointer THAT
 @SP
-M=M+1
-// pop pointer 1
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THAT
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [165]
 // call Sys.main 0
-@Sys.init$ret.0
+@0
 D=A
-@SP
-A=M
+@R13
 M=D
-@SP
-M=M+1
-@R15
-M=1
-(Sys.init$saveCtx.0)
-@R15
-D=M
-@THAT
-D=D-A
-@Sys.init$saveCtxCont.0
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@Sys.init$saveCtx.0
-0;JMP
-(Sys.init$saveCtxCont.0)
-@5
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Sys.main
 @Sys.main
-0;JMP
-(Sys.init$ret.0)
-// pop temp 1
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@R13
-M=D
-@1
 D=A
-@5
-D=D+A
 @R14
 M=D
-@R13
+@RET_ADDRESS_CALL1
+D=A
+@VM_SUBROUTINE_CALL
+0;JMP
+(RET_ADDRESS_CALL1)
+// [177]
+// pop temp R6
+@SP
+AM=M-1
 D=M
-@R14
-A=M
+@R6
 M=D
+// [182]
 // label LOOP
 (Sys.init$LOOP)
+// [182]
 // goto LOOP
 @Sys.init$LOOP
 0;JMP
+// [184]
 // function Sys.main 5
 (Sys.main)
 @5
 D=A
-(Sys.main$$INIT_LCL_VARS)
-@Sys.main$$INIT_LCL_VARS_OVER
-D;JEQ
-@SP
-A=M
-M=0
-@SP
-M=M+1
+(LOOP_Sys.main)
 D=D-1
-@Sys.main$$INIT_LCL_VARS
-0;JMP
-(Sys.main$$INIT_LCL_VARS_OVER)
+@SP
+AM=M+1
+A=A-1
+M=0
+@LOOP_Sys.main
+D;JGT
+
+// [193]
 // push constant 4001
 @4001
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [199]
+// pop pointer THIS
 @SP
-M=M+1
-// pop pointer 0
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THIS
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [204]
 // push constant 5001
 @5001
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [210]
+// pop pointer THAT
 @SP
-M=M+1
-// pop pointer 1
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THAT
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [215]
 // push constant 200
 @200
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [221]
 // pop local 1
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
-@1
-D=A
 @LCL
-D=D+M
-@R14
+A=M+1
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [227]
 // push constant 40
 @40
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [233]
 // pop local 2
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
-@2
-D=A
 @LCL
-D=D+M
-@R14
+A=M+1
+A=A+1
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [240]
 // push constant 6
 @6
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [246]
 // pop local 3
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
-@3
-D=A
 @LCL
-D=D+M
-@R14
+A=M+1
+A=A+1
+A=A+1
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [254]
 // push constant 123
 @123
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [260]
 // call Sys.add12 1
-@Sys.main$ret.0
+@1
 D=A
-@SP
-A=M
+@R13
 M=D
-@SP
-M=M+1
-@R15
-M=1
-(Sys.main$saveCtx.0)
-@R15
-D=M
-@THAT
-D=D-A
-@Sys.main$saveCtxCont.0
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@Sys.main$saveCtx.0
-0;JMP
-(Sys.main$saveCtxCont.0)
-@6
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Sys.add12
 @Sys.add12
-0;JMP
-(Sys.main$ret.0)
-// pop temp 0
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@R13
-M=D
-@0
 D=A
-@5
-D=D+A
 @R14
 M=D
-@R13
+@RET_ADDRESS_CALL2
+D=A
+@VM_SUBROUTINE_CALL
+0;JMP
+(RET_ADDRESS_CALL2)
+// [272]
+// pop temp R5
+@SP
+AM=M-1
 D=M
-@R14
-A=M
+@R5
 M=D
+// [277]
 // push local 0
-@0
-D=A
 @LCL
-A=D+M
+A=M
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [284]
 // push local 1
-@1
-D=A
 @LCL
-A=D+M
+A=M+1
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [291]
 // push local 2
-@2
-D=A
 @LCL
-A=D+M
+A=M+1
+A=A+1
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [299]
 // push local 3
-@3
-D=A
 @LCL
-A=D+M
+D=M
+@3
+A=D+A
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [308]
 // push local 4
-@4
-D=A
 @LCL
-A=D+M
+D=M
+@4
+A=D+A
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [317]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [322]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [327]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [332]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [337]
 // return
-@LCL
-D=M
-@endFrame
-M=D
-@5
-A=D-A
-D=M
-@retAddr
-M=D
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M+1
-@SP
-M=D
-@endFrame
-D=M
-@1
-A=D-A
-D=M
-@THAT
-M=D
-@endFrame
-D=M
-@2
-A=D-A
-D=M
-@THIS
-M=D
-@endFrame
-D=M
-@3
-A=D-A
-D=M
-@ARG
-M=D
-@endFrame
-D=M
-@4
-A=D-A
-D=M
-@LCL
-M=D
-@retAddr
-A=M
+@VM_SUBROUTINE_RETURN
 0;JMP
+// [339]
 // function Sys.add12 0
 (Sys.add12)
-@0
-D=A
-(Sys.add12$$INIT_LCL_VARS)
-@Sys.add12$$INIT_LCL_VARS_OVER
-D;JEQ
-@SP
-A=M
-M=0
-@SP
-M=M+1
-D=D-1
-@Sys.add12$$INIT_LCL_VARS
-0;JMP
-(Sys.add12$$INIT_LCL_VARS_OVER)
+// [339]
 // push constant 4002
 @4002
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [345]
+// pop pointer THIS
 @SP
-M=M+1
-// pop pointer 0
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THIS
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [350]
 // push constant 5002
 @5002
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [356]
+// pop pointer THAT
 @SP
-M=M+1
-// pop pointer 1
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
 @THAT
-D=A
-@R14
 M=D
-@R13
-D=M
-@R14
-A=M
-M=D
+// [361]
 // push argument 0
-@0
-D=A
 @ARG
-A=D+M
+A=M
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [368]
 // push constant 12
 @12
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [374]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [379]
 // return
-@LCL
-D=M
-@endFrame
-M=D
-@5
-A=D-A
-D=M
-@retAddr
-M=D
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M+1
-@SP
-M=D
-@endFrame
-D=M
-@1
-A=D-A
-D=M
-@THAT
-M=D
-@endFrame
-D=M
-@2
-A=D-A
-D=M
-@THIS
-M=D
-@endFrame
-D=M
-@3
-A=D-A
-D=M
-@ARG
-M=D
-@endFrame
-D=M
-@4
-A=D-A
-D=M
-@LCL
-M=D
-@retAddr
-A=M
+@VM_SUBROUTINE_RETURN
 0;JMP

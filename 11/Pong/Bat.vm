@@ -1,4 +1,4 @@
-// Created on 2020-02-13 00:45:08 by sonack compiler.
+// Created on 2020-02-18 01:35:44 by sonack compiler.
 function Bat.new 0
 push constant 5
 call Memory.alloc 1

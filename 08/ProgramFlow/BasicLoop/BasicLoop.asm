@@ -1,160 +1,247 @@
-// *******************************************
-// **** Compile Time: 2020-02-06 17:25:32 ****
-// *******************************************
-// **************************************************
-// **** File: ProgramFlow/BasicLoop/BasicLoop.vm ****
-// **************************************************
-// push constant 0
-@0
-D=A
-@SP
-A=M
+// [0]
+// goto START
+@BAREBONE$START
+0;JMP
+(VM_SUBROUTINE_EQ)
+@R15
 M=D
 @SP
-M=M+1
-// pop local 0
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@R13
-M=D
-@0
-D=A
-@LCL
-D=D+M
-@R14
-M=D
-@R13
-D=M
-@R14
-A=M
-M=D
-// label LOOP_START
-(BasicLoop$LOOP_START)
-// push argument 0
-@0
-D=A
-@ARG
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// push local 0
-@0
-D=A
-@LCL
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// add
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
-// pop local 0
+D=M-D
+M=0
+@END_EQ
+D;JNE
 @SP
-M=M-1
-@SP
+A=M-1
+M=-1
+(END_EQ)
+@R15
 A=M
-D=M
-@R13
+0;JMP
+(VM_SUBROUTINE_GT)
+@R15
 M=D
-@0
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_GT
+D;JLE
+@SP
+A=M-1
+M=-1
+(END_GT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_LT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_LT
+D;JGE
+@SP
+A=M-1
+M=-1
+(END_LT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_RETURN)
+@5
 D=A
 @LCL
-D=D+M
+A=M-D
+D=M
+@R13
+M=D
+@SP
+AM=M-1
+D=M
+@ARG
+A=M
+M=D
+D=A
+@SP
+M=D+1
+@LCL
+D=M
 @R14
+AM=D-1
+D=M
+@THAT
+M=D
+@R14
+AM=M-1
+D=M
+@THIS
+M=D
+@R14
+AM=M-1
+D=M
+@ARG
+M=D
+@R14
+AM=M-1
+D=M
+@LCL
 M=D
 @R13
+A=M
+0;JMP
+(VM_SUBROUTINE_CALL)
+@SP
+A=M
+M=D
+@LCL
 D=M
+@SP
+AM=M+1
+M=D
+@ARG
+D=M
+@SP
+AM=M+1
+M=D
+@THIS
+D=M
+@SP
+AM=M+1
+M=D
+@THAT
+D=M
+@SP
+AM=M+1
+M=D
+@4
+D=A
+@R13
+D=D+M
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+MD=M+1
+@LCL
+M=D
 @R14
 A=M
+0;JMP
+// [129]
+// label START
+(BAREBONE$START)
+// [129]
+// push constant 0
+@SP
+AM=M+1
+A=A-1
+M=0
+// [133]
+// pop local 0
+@SP
+AM=M-1
+D=M
+@LCL
+A=M
 M=D
+// [139]
+// label LOOP_START
+(BAREBONE$LOOP_START)
+// [139]
 // push argument 0
-@0
-D=A
 @ARG
-A=D+M
+A=M
 D=M
 @SP
+AM=M+1
+A=A-1
+M=D
+// [146]
+// push local 0
+@LCL
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [153]
+// add
+@SP
+AM=M-1
+D=M
+A=A-1
+M=M+D
+// [158]
+// pop local 0
+@SP
+AM=M-1
+D=M
+@LCL
 A=M
 M=D
+// [164]
+// push argument 0
+@ARG
+A=M
+D=M
 @SP
-M=M+1
+AM=M+1
+A=A-1
+M=D
+// [171]
 // push constant 1
-@1
-D=A
 @SP
-A=M
-M=D
-@SP
-M=M+1
+AM=M+1
+A=A-1
+M=1
+// [175]
 // sub
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
 M=M-D
+// [180]
 // pop argument 0
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@R13
-M=D
-@0
-D=A
 @ARG
-D=D+M
-@R14
-M=D
-@R13
-D=M
-@R14
 A=M
 M=D
+// [186]
 // push argument 0
-@0
-D=A
 @ARG
-A=D+M
+A=M
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [193]
 // if-goto LOOP_START
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
-@BasicLoop$LOOP_START
-D; JNE
+@BAREBONE$LOOP_START
+D;JNE
+// [198]
 // push local 0
-@0
-D=A
 @LCL
-A=D+M
+A=M
 D=M
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1

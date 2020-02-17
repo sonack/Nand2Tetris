@@ -1,468 +1,336 @@
-// *******************************************
-// **** Compile Time: 2020-02-06 17:05:23 ****
-// *******************************************
+// [0]
 // bootstrap
+// sp = 256
 @256
 D=A
 @SP
 M=D
+// [4]
+// call Sys.init
+// [4]
 // call Sys.init 0
-@BootStrap$ret.0
+@0
 D=A
-@SP
-A=M
+@R13
 M=D
-@SP
-M=M+1
-@R15
-M=1
-(BootStrap$saveCtx.0)
-@R15
-D=M
-@THAT
-D=D-A
-@BootStrap$saveCtxCont.0
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@BootStrap$saveCtx.0
-0;JMP
-(BootStrap$saveCtxCont.0)
-@5
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Sys.init
 @Sys.init
-0;JMP
-(BootStrap$ret.0)
-// ******************************************************
-// **** File: FunctionCalls/FibonacciElement/Main.vm ****
-// ******************************************************
-// function Main.fibonacci 0
-(Main.fibonacci)
-@0
 D=A
-(Main.fibonacci$$INIT_LCL_VARS)
-@Main.fibonacci$$INIT_LCL_VARS_OVER
-D;JEQ
-@SP
-A=M
-M=0
-@SP
-M=M+1
-D=D-1
-@Main.fibonacci$$INIT_LCL_VARS
-0;JMP
-(Main.fibonacci$$INIT_LCL_VARS_OVER)
-// push argument 0
-@0
+@R14
+M=D
+@RET_ADDRESS_CALL0
 D=A
-@ARG
-A=D+M
-D=M
-@SP
-A=M
+@VM_SUBROUTINE_CALL
+0;JMP
+(RET_ADDRESS_CALL0)
+(VM_SUBROUTINE_EQ)
+@R15
 M=D
 @SP
-M=M+1
-// push constant 2
-@2
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// lt
-@SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
 D=M-D
-@TRUE_LT_0
-D; JLT
-@SP
-A=M-1
 M=0
-@CONT_LT_0
-0;JMP
-(TRUE_LT_0)
+@END_EQ
+D;JNE
 @SP
 A=M-1
 M=-1
-(CONT_LT_0)
-// if-goto IF_TRUE
-@SP
-M=M-1
-@SP
+(END_EQ)
+@R15
 A=M
-D=M
-@Main.fibonacci$IF_TRUE
-D; JNE
-// goto IF_FALSE
-@Main.fibonacci$IF_FALSE
 0;JMP
-// label IF_TRUE
-(Main.fibonacci$IF_TRUE)
-// push argument 0
-@0
-D=A
-@ARG
-A=D+M
-D=M
-@SP
-A=M
+(VM_SUBROUTINE_GT)
+@R15
 M=D
 @SP
-M=M+1
-// return
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_GT
+D;JLE
+@SP
+A=M-1
+M=-1
+(END_GT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_LT)
+@R15
+M=D
+@SP
+AM=M-1
+D=M
+A=A-1
+D=M-D
+M=0
+@END_LT
+D;JGE
+@SP
+A=M-1
+M=-1
+(END_LT)
+@R15
+A=M
+0;JMP
+(VM_SUBROUTINE_RETURN)
+@5
+D=A
+@LCL
+A=M-D
+D=M
+@R13
+M=D
+@SP
+AM=M-1
+D=M
+@ARG
+A=M
+M=D
+D=A
+@SP
+M=D+1
 @LCL
 D=M
-@endFrame
-M=D
-@5
-A=D-A
-D=M
-@retAddr
-M=D
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M+1
-@SP
-M=D
-@endFrame
-D=M
-@1
-A=D-A
+@R14
+AM=D-1
 D=M
 @THAT
 M=D
-@endFrame
-D=M
-@2
-A=D-A
+@R14
+AM=M-1
 D=M
 @THIS
 M=D
-@endFrame
-D=M
-@3
-A=D-A
+@R14
+AM=M-1
 D=M
 @ARG
 M=D
-@endFrame
-D=M
-@4
-A=D-A
+@R14
+AM=M-1
 D=M
 @LCL
 M=D
-@retAddr
+@R13
 A=M
 0;JMP
-// label IF_FALSE
-(Main.fibonacci$IF_FALSE)
-// push argument 0
-@0
-D=A
-@ARG
-A=D+M
-D=M
+(VM_SUBROUTINE_CALL)
 @SP
 A=M
 M=D
+@LCL
+D=M
 @SP
-M=M+1
+AM=M+1
+M=D
+@ARG
+D=M
+@SP
+AM=M+1
+M=D
+@THIS
+D=M
+@SP
+AM=M+1
+M=D
+@THAT
+D=M
+@SP
+AM=M+1
+M=D
+@4
+D=A
+@R13
+D=D+M
+@SP
+D=M-D
+@ARG
+M=D
+@SP
+MD=M+1
+@LCL
+M=D
+@R14
+A=M
+0;JMP
+// [143]
+// function Main.fibonacci 0
+(Main.fibonacci)
+// [143]
+// push argument 0
+@ARG
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [150]
 // push constant 2
 @2
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
+// [156]
+// lt
+@RET_ADDRESS_LT0
+D=A
+@VM_SUBROUTINE_LT
+0;JMP
+(RET_ADDRESS_LT0)
+// [160]
+// if-goto IF_TRUE
 @SP
-M=M+1
+AM=M-1
+D=M
+@Main.fibonacci$IF_TRUE
+D;JNE
+// [165]
+// goto IF_FALSE
+@Main.fibonacci$IF_FALSE
+0;JMP
+// [167]
+// label IF_TRUE
+(Main.fibonacci$IF_TRUE)
+// [167]
+// push argument 0
+@ARG
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [174]
+// return
+@VM_SUBROUTINE_RETURN
+0;JMP
+// [176]
+// label IF_FALSE
+(Main.fibonacci$IF_FALSE)
+// [176]
+// push argument 0
+@ARG
+A=M
+D=M
+@SP
+AM=M+1
+A=A-1
+M=D
+// [183]
+// push constant 2
+@2
+D=A
+@SP
+AM=M+1
+A=A-1
+M=D
+// [189]
 // sub
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
 M=M-D
+// [194]
 // call Main.fibonacci 1
-@Main.fibonacci$ret.0
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=1
-(Main.fibonacci$saveCtx.0)
-@R15
-D=M
-@THAT
-D=D-A
-@Main.fibonacci$saveCtxCont.0
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@Main.fibonacci$saveCtx.0
-0;JMP
-(Main.fibonacci$saveCtxCont.0)
-@6
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Main.fibonacci
-@Main.fibonacci
-0;JMP
-(Main.fibonacci$ret.0)
-// push argument 0
-@0
-D=A
-@ARG
-A=D+M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// push constant 1
 @1
 D=A
-@SP
-A=M
+@R13
 M=D
+@Main.fibonacci
+D=A
+@R14
+M=D
+@RET_ADDRESS_CALL1
+D=A
+@VM_SUBROUTINE_CALL
+0;JMP
+(RET_ADDRESS_CALL1)
+// [206]
+// push argument 0
+@ARG
+A=M
+D=M
 @SP
-M=M+1
+AM=M+1
+A=A-1
+M=D
+// [213]
+// push constant 1
+@SP
+AM=M+1
+A=A-1
+M=1
+// [217]
 // sub
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
 M=M-D
+// [222]
 // call Main.fibonacci 1
-@Main.fibonacci$ret.1
+@1
 D=A
-@SP
-A=M
+@R13
 M=D
-@SP
-M=M+1
-@R15
-M=1
-(Main.fibonacci$saveCtx.1)
-@R15
-D=M
-@THAT
-D=D-A
-@Main.fibonacci$saveCtxCont.1
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@Main.fibonacci$saveCtx.1
-0;JMP
-(Main.fibonacci$saveCtxCont.1)
-@6
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Main.fibonacci
 @Main.fibonacci
+D=A
+@R14
+M=D
+@RET_ADDRESS_CALL2
+D=A
+@VM_SUBROUTINE_CALL
 0;JMP
-(Main.fibonacci$ret.1)
+(RET_ADDRESS_CALL2)
+// [234]
 // add
 @SP
-M=M-1
-@SP
-A=M
+AM=M-1
 D=M
 A=A-1
-M=D+M
+M=M+D
+// [239]
 // return
-@LCL
-D=M
-@endFrame
-M=D
-@5
-A=D-A
-D=M
-@retAddr
-M=D
-@SP
-M=M-1
-@SP
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M+1
-@SP
-M=D
-@endFrame
-D=M
-@1
-A=D-A
-D=M
-@THAT
-M=D
-@endFrame
-D=M
-@2
-A=D-A
-D=M
-@THIS
-M=D
-@endFrame
-D=M
-@3
-A=D-A
-D=M
-@ARG
-M=D
-@endFrame
-D=M
-@4
-A=D-A
-D=M
-@LCL
-M=D
-@retAddr
-A=M
+@VM_SUBROUTINE_RETURN
 0;JMP
-// *****************************************************
-// **** File: FunctionCalls/FibonacciElement/Sys.vm ****
-// *****************************************************
+// [241]
 // function Sys.init 0
 (Sys.init)
-@0
-D=A
-(Sys.init$$INIT_LCL_VARS)
-@Sys.init$$INIT_LCL_VARS_OVER
-D;JEQ
-@SP
-A=M
-M=0
-@SP
-M=M+1
-D=D-1
-@Sys.init$$INIT_LCL_VARS
-0;JMP
-(Sys.init$$INIT_LCL_VARS_OVER)
+// [241]
 // push constant 4
 @4
 D=A
 @SP
-A=M
+AM=M+1
+A=A-1
 M=D
-@SP
-M=M+1
+// [247]
 // call Main.fibonacci 1
-@Sys.init$ret.0
+@1
 D=A
-@SP
-A=M
+@R13
 M=D
-@SP
-M=M+1
-@R15
-M=1
-(Sys.init$saveCtx.0)
-@R15
-D=M
-@THAT
-D=D-A
-@Sys.init$saveCtxCont.0
-D;JGT
-@R15
-A=M
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@R15
-M=M+1
-@Sys.init$saveCtx.0
-0;JMP
-(Sys.init$saveCtxCont.0)
-@6
-D=A
-@SP
-D=M-D
-@ARG
-M=D
-@SP
-D=M
-@LCL
-M=D
-// goto Main.fibonacci
 @Main.fibonacci
+D=A
+@R14
+M=D
+@RET_ADDRESS_CALL3
+D=A
+@VM_SUBROUTINE_CALL
 0;JMP
-(Sys.init$ret.0)
+(RET_ADDRESS_CALL3)
+// [259]
 // label WHILE
 (Sys.init$WHILE)
+// [259]
 // goto WHILE
 @Sys.init$WHILE
 0;JMP

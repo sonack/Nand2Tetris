@@ -1,4 +1,4 @@
-// Created on 2020-02-16 00:32:47 by sonack compiler.
+// Created on 2020-02-18 01:19:57 by sonack compiler.
 function String.new 0
 push constant 3
 call Memory.alloc 1

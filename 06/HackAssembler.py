@@ -116,15 +116,28 @@ class Coder(object):
             ('!A', '110001'),
             ('-D', '001111'),
             ('-A', '110011'),
+
             ('D+1','011111'),
+            ('1+D','011111'),
+
             ('A+1', '110111'),
+            ('1+A', '110111'),
+
             ('D-1', '001110'),
             ('A-1', '110010'),
+
             ('D+A', '000010'),
+            ('A+D', '000010'),
+
             ('D-A', '010011'),
             ('A-D', '000111'),
+
             ('D&A', '000000'),
-            ('D|A', '010101')
+            ('A&D', '000000'),
+
+            ('D|A', '010101'),
+            ('A|D', '010101')
+
         })
         return a + mapping[c]
     
@@ -201,10 +214,10 @@ def firstPass(parser, symbolTable):
 def main():
     varSlot = 16
     parser = argparse.ArgumentParser()
-    parser.add_argument('--inputFile', type=str, default='pong/Pong.asm', help='the asm file to assembly')
+    parser.add_argument('--src', type=str, default='pong/Pong.asm', help='the asm file to assembly')
     args = parser.parse_args()
     # print(args)
-    srcName = args.inputFile
+    srcName = args.src
     baseName, suffix = osp.splitext(osp.basename(srcName))
     assert suffix.lower() == '.asm', '输入文件类型错误!'
     tgtName = baseName + '.hack'
